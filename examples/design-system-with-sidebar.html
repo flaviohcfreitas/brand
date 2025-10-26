@@ -1,0 +1,1996 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System V3 - Dark Mode Extended</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* Dark Theme (Default) */
+            --bg-primary: #1a1a1c;
+            --bg-secondary: #2a2a2c;
+            --bg-tertiary: #3A3A3C;
+            --text-primary: #F5EFE7;
+            --text-secondary: rgba(245,239,231,0.8);
+            --text-muted: rgba(245,239,231,0.6);
+            --accent-primary: #E87A52;
+            --accent-secondary: #388379;
+            --border-color: rgba(232,122,82,0.15);
+            --shadow-color: rgba(232,122,82,0.2);
+        }
+
+        body.light-mode {
+            /* Light Theme */
+            --bg-primary: #F5EFE7;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f8f8f8;
+            --text-primary: #3A3A3C;
+            --text-secondary: #5A5A5D;
+            --text-muted: rgba(58,58,60,0.7);
+            --accent-primary: #E87A52;
+            --accent-secondary: #388379;
+            --border-color: rgba(58,58,60,0.15);
+            --shadow-color: rgba(58,58,60,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 0;
+            margin-left: 280px;
+            transition: all 0.3s ease;
+        }
+
+        body.sidebar-hidden {
+            margin-left: 0;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--bg-secondary);
+            border-right: 2px solid var(--border-color);
+            padding: 24px 0;
+            overflow-y: auto;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        body.sidebar-hidden .sidebar {
+            transform: translateX(-100%);
+        }
+
+        .sidebar-header {
+            padding: 0 24px 24px;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 24px;
+        }
+
+        .sidebar-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sidebar-logo i {
+            color: var(--accent-primary);
+        }
+
+        .sidebar-subtitle {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .sidebar-nav {
+            padding: 0 16px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 4px;
+            transition: all 0.2s;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .nav-item:hover {
+            background: var(--bg-tertiary);
+            color: var(--accent-primary);
+        }
+
+        .nav-item.active {
+            background: rgba(232,122,82,0.15);
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .nav-item i {
+            width: 20px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        /* ===== THEME TOGGLE ===== */
+        .theme-toggle-wrapper {
+            padding: 16px 24px;
+            border-top: 2px solid var(--border-color);
+            margin-top: 24px;
+        }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .theme-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 56px;
+            height: 28px;
+            background: var(--bg-tertiary);
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid var(--border-color);
+        }
+
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent-primary);
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s;
+        }
+
+        body.light-mode .toggle-switch::before {
+            transform: translateX(28px);
+            background: var(--accent-secondary);
+        }
+
+        .toggle-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            z-index: 1;
+        }
+
+        .toggle-icon.moon {
+            left: 6px;
+            color: var(--text-primary);
+        }
+
+        .toggle-icon.sun {
+            right: 6px;
+            color: var(--text-muted);
+        }
+
+        body.light-mode .toggle-icon.moon {
+            color: var(--text-muted);
+        }
+
+        body.light-mode .toggle-icon.sun {
+            color: var(--text-primary);
+        }
+
+        /* ===== MOBILE TOGGLE ===== */
+        .mobile-toggle {
+            position: fixed;
+            left: 16px;
+            top: 16px;
+            width: 48px;
+            height: 48px;
+            background: var(--accent-primary);
+            border: none;
+            border-radius: 12px;
+            color: var(--bg-primary);
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            transition: all 0.2s;
+        }
+
+        .mobile-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .mobile-toggle:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 1024px) {
+            body {
+                margin-left: 0;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            body.sidebar-visible .sidebar {
+                transform: translateX(0);
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            body.sidebar-visible .mobile-toggle {
+                left: 296px;
+            }
+        }
+
+        /* ===== HEADER DARK ===== */
+        .header {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            padding: 48px 32px;
+            text-align: center;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .header h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 16px;
+            color: var(--text-muted);
+        }
+
+        /* ===== NAVIGATION DARK ===== */
+        .nav {
+            background: var(--bg-secondary);
+            padding: 16px 32px;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            white-space: nowrap;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--bg-tertiary);
+            color: var(--accent-primary);
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 48px 32px;
+        }
+
+        /* ===== SECTION DARK ===== */
+        .section {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border-color);
+            scroll-margin-top: 80px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title i {
+            color: var(--accent-primary);
+        }
+
+        .section-subtitle {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        /* ===== DARK HERO SECTIONS ===== */
+        .hero-dark {
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+            border-radius: 24px;
+            padding: 80px 60px;
+            margin-bottom: 32px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .hero-dark::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(232,122,82,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-dark .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-dark h2 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            line-height: 1.1;
+        }
+
+        .hero-dark p {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .hero-icon {
+            width: 120px;
+            height: 120px;
+            background: rgba(232,122,82,0.15);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: var(--accent-primary);
+            margin: 0 auto 32px;
+        }
+
+        /* ===== DARK CARDS GRID ===== */
+        .dark-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .dark-card {
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .dark-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px var(--shadow-color);
+            border-color: var(--accent-primary);
+        }
+
+        .dark-card:hover::before {
+            opacity: 1;
+        }
+
+        .dark-card-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(232,122,82,0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--accent-primary);
+            margin-bottom: 24px;
+        }
+
+        .dark-card-icon.secondary {
+            background: rgba(56,131,121,0.15);
+            color: var(--accent-secondary);
+        }
+
+        .dark-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .dark-card p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        /* ===== DARK FEATURE CARDS ===== */
+        .feature-card-dark {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .feature-card-dark:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 8px 32px var(--shadow-color);
+        }
+
+        .feature-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, #d66840 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #F5EFE7;
+            flex-shrink: 0;
+        }
+
+        .feature-content h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .feature-content p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ===== DARK STATS ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-primary);
+        }
+
+        .stat-value {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .stat-value.secondary {
+            color: var(--accent-secondary);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        /* ===== DARK TESTIMONIALS ===== */
+        .testimonial-dark {
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 24px;
+            border: 2px solid var(--accent-primary);
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .testimonial-dark:hover {
+            border-color: #d66840;
+            box-shadow: 0 8px 32px var(--shadow-color);
+        }
+
+        .testimonial-dark.secondary {
+            border-color: var(--accent-secondary);
+        }
+
+        .testimonial-dark.secondary:hover {
+            border-color: #2d6b64;
+        }
+
+        .testimonial-dark .quote-icon {
+            font-size: 48px;
+            color: rgba(232,122,82,0.2);
+            position: absolute;
+            top: 24px;
+            right: 24px;
+        }
+
+        .testimonial-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .author-avatar {
+            width: 56px;
+            height: 56px;
+            background: rgba(232,122,82,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--accent-primary);
+        }
+
+        .author-avatar.secondary {
+            background: rgba(56,131,121,0.2);
+            color: var(--accent-secondary);
+        }
+
+        .author-info h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .author-info p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* ===== DARK PRICING CARDS ===== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .pricing-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 40px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+            border-color: var(--accent-primary);
+            transform: scale(1.05);
+            box-shadow: 0 12px 48px var(--shadow-color);
+        }
+
+        .pricing-card:hover {
+            border-color: var(--accent-primary);
+        }
+
+        .pricing-badge {
+            background: var(--accent-primary);
+            color: #F5EFE7;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .pricing-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .pricing-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .pricing-value {
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .pricing-period {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            color: var(--text-secondary);
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pricing-features i {
+            color: var(--accent-secondary);
+            font-size: 14px;
+        }
+
+        /* ===== DARK TIMELINE ===== */
+        .timeline-dark {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 32px;
+        }
+
+        .timeline-dark::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -48px;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--bg-secondary);
+            border: 3px solid var(--accent-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary);
+            font-size: 16px;
+        }
+
+        .timeline-content {
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+        }
+
+        .timeline-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .timeline-content p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ===== DARK BUTTONS ===== */
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary-dark {
+            background: var(--accent-primary);
+            color: #F5EFE7;
+        }
+
+        .btn-primary-dark:hover {
+            background: #d66840;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px var(--shadow-color);
+        }
+
+        .btn-secondary-dark {
+            background: var(--accent-secondary);
+            color: #F5EFE7;
+        }
+
+        .btn-secondary-dark:hover {
+            background: #2d6b64;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(56,131,121,0.4);
+        }
+
+        .btn-outline-dark {
+            background: transparent;
+            color: var(--accent-primary);
+            box-shadow: inset 0 0 0 2px var(--accent-primary);
+        }
+
+        .btn-outline-dark:hover {
+            background: rgba(232,122,82,0.1);
+        }
+
+        .btn-ghost-dark {
+            background: rgba(232,122,82,0.1);
+            color: var(--accent-primary);
+        }
+
+        .btn-ghost-dark:hover {
+            background: rgba(232,122,82,0.2);
+        }
+
+        /* ===== DARK ALERT BOXES ===== */
+        .alert-dark {
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            border-left: 4px solid;
+            background: var(--bg-secondary);
+        }
+
+        .alert-dark.info {
+            border-color: var(--accent-secondary);
+        }
+
+        .alert-dark.warning {
+            border-color: var(--accent-primary);
+        }
+
+        .alert-dark.success {
+            border-color: var(--accent-secondary);
+        }
+
+        .alert-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .alert-dark.info .alert-icon {
+            color: var(--accent-secondary);
+        }
+
+        .alert-dark.warning .alert-icon {
+            color: var(--accent-primary);
+        }
+
+        .alert-dark.success .alert-icon {
+            color: var(--accent-secondary);
+        }
+
+        .alert-content h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .alert-content p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ===== DARK CODE BLOCK ===== */
+        .code-dark {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            overflow-x: auto;
+            margin-bottom: 24px;
+        }
+
+        .code-dark .code-comment {
+            color: #5A5A5D;
+        }
+
+        .code-dark .code-property {
+            color: var(--accent-secondary);
+        }
+
+        .code-dark .code-value {
+            color: var(--accent-primary);
+        }
+
+        .code-dark .code-string {
+            color: var(--text-primary);
+        }
+
+        /* ===== DARK ACCORDION ===== */
+        .accordion-dark {
+            margin-bottom: 16px;
+        }
+
+        .accordion-header {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+        }
+
+        .accordion-header:hover {
+            border-color: var(--accent-primary);
+            background: var(--bg-tertiary);
+        }
+
+        .accordion-header h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .accordion-icon {
+            color: var(--accent-primary);
+            font-size: 20px;
+            transition: transform 0.2s;
+        }
+
+        .accordion-dark.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-dark.active .accordion-content {
+            max-height: 500px;
+        }
+
+        .accordion-body {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            padding: 24px;
+            margin-top: -12px;
+        }
+
+        .accordion-body p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        /* ===== DARK TABS ===== */
+        .tabs-dark {
+            margin-bottom: 32px;
+        }
+
+        .tabs-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .tab-btn.active {
+            color: var(--accent-primary);
+            border-bottom-color: var(--accent-primary);
+        }
+
+        .tab-btn:hover {
+            color: var(--accent-primary);
+        }
+
+        .tab-content {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .tab-content h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .tab-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ===== DARK PROGRESS BARS ===== */
+        .progress-item {
+            margin-bottom: 24px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .progress-label span {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .progress-bar-bg {
+            background: rgba(232,122,82,0.1);
+            border-radius: 8px;
+            height: 12px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            height: 100%;
+            border-radius: 8px;
+            transition: width 0.3s;
+        }
+
+        /* ===== DARK BADGE ===== */
+        .badge-dark {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-primary-dark {
+            background: var(--accent-primary);
+            color: #F5EFE7;
+        }
+
+        .badge-secondary-dark {
+            background: var(--accent-secondary);
+            color: #F5EFE7;
+        }
+
+        .badge-outline-dark {
+            background: transparent;
+            color: var(--accent-primary);
+            border: 2px solid var(--accent-primary);
+        }
+
+        .badge-ghost-dark {
+            background: rgba(232,122,82,0.15);
+            color: var(--accent-primary);
+        }
+
+        /* ===== DARK LIST ===== */
+        .list-dark {
+            list-style: none;
+        }
+
+        .list-dark li {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .list-dark li:last-child {
+            border-bottom: none;
+        }
+
+        .list-dark i {
+            color: var(--accent-primary);
+            font-size: 20px;
+            margin-top: 2px;
+        }
+
+        .list-dark .list-content h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .list-dark .list-content p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero-dark {
+                padding: 60px 32px;
+            }
+
+            .hero-dark h2 {
+                font-size: 36px;
+            }
+
+            .dark-cards-grid,
+            .stats-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card-dark {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .container {
+                padding: 32px 16px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MOBILE TOGGLE -->
+    <button class="mobile-toggle" onclick="toggleSidebar()">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                Design System V3
+            </div>
+            <div class="sidebar-subtitle">Navegue pelos componentes</div>
+        </div>
+
+        <div class="sidebar-nav">
+            <a href="#hero" class="nav-item" data-section="hero">
+                <i class="fa-solid fa-star"></i>
+                <span>Hero Sections</span>
+            </a>
+            <a href="#cards" class="nav-item" data-section="cards">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>Cards</span>
+            </a>
+            <a href="#features" class="nav-item" data-section="features">
+                <i class="fa-solid fa-sparkles"></i>
+                <span>Features</span>
+            </a>
+            <a href="#stats" class="nav-item" data-section="stats">
+                <i class="fa-solid fa-chart-simple"></i>
+                <span>Stats</span>
+            </a>
+            <a href="#testimonials" class="nav-item" data-section="testimonials">
+                <i class="fa-solid fa-quote-left"></i>
+                <span>Testimonials</span>
+            </a>
+            <a href="#pricing" class="nav-item" data-section="pricing">
+                <i class="fa-solid fa-tags"></i>
+                <span>Pricing</span>
+            </a>
+            <a href="#timeline" class="nav-item" data-section="timeline">
+                <i class="fa-solid fa-timeline"></i>
+                <span>Timeline</span>
+            </a>
+            <a href="#alerts" class="nav-item" data-section="alerts">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span>Alerts</span>
+            </a>
+            <a href="#accordion" class="nav-item" data-section="accordion">
+                <i class="fa-solid fa-list"></i>
+                <span>Accordion</span>
+            </a>
+            <a href="#tabs" class="nav-item" data-section="tabs">
+                <i class="fa-solid fa-folder"></i>
+                <span>Tabs</span>
+            </a>
+            <a href="#progress" class="nav-item" data-section="progress">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Progress</span>
+            </a>
+        </div>
+
+        <!-- THEME TOGGLE -->
+        <div class="theme-toggle-wrapper">
+            <div class="theme-toggle">
+                <div class="theme-label">
+                    <i class="fa-solid fa-palette"></i>
+                    Tema
+                </div>
+                <div class="toggle-switch" onclick="toggleTheme()">
+                    <i class="fa-solid fa-moon toggle-icon moon"></i>
+                    <i class="fa-solid fa-sun toggle-icon sun"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>🌙 Design System V3</h1>
+        <p>Extensão completa com componentes dark usando paleta Equilibrada</p>
+    </div>
+
+    <div class="container">
+
+        <!-- HERO SECTIONS -->
+        <div class="section" id="hero">
+            <h2 class="section-title">
+                <i class="fa-solid fa-star"></i>
+                Hero Sections Dark
+            </h2>
+            <p class="section-subtitle">Seções hero impactantes com fundo escuro para landing pages</p>
+
+            <!-- Hero 1 -->
+            <div class="hero-dark">
+                <div class="hero-content">
+                    <div class="hero-icon">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h2>Transforme seu Design com IA</h2>
+                    <p>Metodologia exclusiva que capacita designers e product managers a criar produtos exponenciais sem precisar de conhecimento técnico avançado.</p>
+                    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                        <button class="btn btn-primary-dark">
+                            <i class="fa-solid fa-rocket"></i>
+                            Começar Agora
+                        </button>
+                        <button class="btn btn-outline-dark">
+                            <i class="fa-solid fa-play"></i>
+                            Ver Demo
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero 2 -->
+            <div class="hero-dark">
+                <div class="hero-content">
+                    <span class="badge-dark badge-primary-dark" style="margin-bottom: 24px;">
+                        <i class="fa-solid fa-fire"></i> WORKSHOP 2025
+                    </span>
+                    <h2>Design Exponencial</h2>
+                    <p>Aprenda a multiplicar seus resultados através de automação inteligente e processos otimizados. Acelere sua carreira em apenas 8 semanas.</p>
+                    <button class="btn btn-secondary-dark" style="margin-top: 8px;">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        Inscreva-se Agora
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- DARK CARDS -->
+        <div class="section" id="cards">
+            <h2 class="section-title">
+                <i class="fa-solid fa-layer-group"></i>
+                Cards Dark
+            </h2>
+            <p class="section-subtitle">Cards modernos com efeitos de hover para fundo escuro</p>
+
+            <div class="dark-cards-grid">
+
+                <div class="dark-card">
+                    <div class="dark-card-icon">
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <h3>Workshop Intensivo</h3>
+                    <p>4 semanas de imersão total em IA aplicada ao design. Aprenda com casos reais e projetos práticos que transformarão sua forma de trabalhar.</p>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
+                        <span class="badge-dark badge-primary-dark">PREMIUM</span>
+                        <span class="badge-dark badge-ghost-dark">ONLINE</span>
+                    </div>
+                    <button class="btn btn-ghost-dark">
+                        <i class="fa-solid fa-arrow-right"></i>
+                        Saiba Mais
+                    </button>
+                </div>
+
+                <div class="dark-card">
+                    <div class="dark-card-icon secondary">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3>Consultoria Estratégica</h3>
+                    <p>Implementação personalizada de IA na sua empresa. Acompanhamento direto para transformar processos e resultados do seu time.</p>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
+                        <span class="badge-dark badge-secondary-dark">CORPORATIVO</span>
+                        <span class="badge-dark badge-outline-dark">6 MESES</span>
+                    </div>
+                    <button class="btn btn-ghost-dark">
+                        <i class="fa-solid fa-arrow-right"></i>
+                        Agendar Call
+                    </button>
+                </div>
+
+                <div class="dark-card">
+                    <div class="dark-card-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3>Certificação Professional</h3>
+                    <p>Programa completo com certificado internacional. Torne-se um especialista reconhecido em IA para Design e Product Management.</p>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
+                        <span class="badge-dark badge-primary-dark">CERTIFICADO</span>
+                        <span class="badge-dark badge-ghost-dark">12 SEMANAS</span>
+                    </div>
+                    <button class="btn btn-ghost-dark">
+                        <i class="fa-solid fa-arrow-right"></i>
+                        Ver Programa
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- FEATURE CARDS -->
+        <div class="section" id="features">
+            <h2 class="section-title">
+                <i class="fa-solid fa-sparkles"></i>
+                Features Numeradas
+            </h2>
+            <p class="section-subtitle">Destaque recursos ou processos com cards numerados</p>
+
+            <div class="feature-card-dark">
+                <div class="feature-number">1</div>
+                <div class="feature-content">
+                    <h3>Diagnóstico Personalizado</h3>
+                    <p>Avaliamos seu nível atual e mapeamos exatamente onde você precisa evoluir. Criamos um plano customizado para acelerar seus resultados desde o primeiro dia.</p>
+                </div>
+            </div>
+
+            <div class="feature-card-dark">
+                <div class="feature-number" style="background: linear-gradient(135deg, #388379 0%, #2d6b64 100%);">2</div>
+                <div class="feature-content">
+                    <h3>Metodologia Prática</h3>
+                    <p>Aprenda fazendo. Cada módulo inclui projetos hands-on que você pode aplicar imediatamente no seu trabalho. Zero teoria sem aplicação prática.</p>
+                </div>
+            </div>
+
+            <div class="feature-card-dark">
+                <div class="feature-number">3</div>
+                <div class="feature-content">
+                    <h3>Mentoria Contínua</h3>
+                    <p>Acesso direto aos instrutores para tirar dúvidas, revisar projetos e receber feedback personalizado durante toda sua jornada de aprendizado.</p>
+                </div>
+            </div>
+
+            <div class="feature-card-dark">
+                <div class="feature-number" style="background: linear-gradient(135deg, #388379 0%, #2d6b64 100%);">4</div>
+                <div class="feature-content">
+                    <h3>Certificação e Rede</h3>
+                    <p>Certificado reconhecido no mercado e acesso vitalício à comunidade exclusiva de alumni para networking e oportunidades profissionais.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- STATS -->
+        <div class="section" id="stats">
+            <h2 class="section-title">
+                <i class="fa-solid fa-chart-simple"></i>
+                Estatísticas
+            </h2>
+            <p class="section-subtitle">Mostre números impactantes com cards de estatísticas</p>
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-value">500+</div>
+                    <div class="stat-label">Alunos Formados</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-value secondary">85%</div>
+                    <div class="stat-label">Redução de Tempo</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-value">4.9<i class="fa-solid fa-star" style="font-size: 24px; margin-left: 8px;"></i></div>
+                    <div class="stat-label">Avaliação Média</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-value secondary">3x</div>
+                    <div class="stat-label">Produtividade</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- TESTIMONIALS -->
+        <div class="section" id="testimonials">
+            <h2 class="section-title">
+                <i class="fa-solid fa-quote-left"></i>
+                Depoimentos
+            </h2>
+            <p class="section-subtitle">Cards de depoimentos com destaque visual</p>
+
+            <div class="testimonial-dark">
+                <i class="fa-solid fa-quote-right quote-icon"></i>
+                <p class="testimonial-text">"Este workshop transformou completamente minha forma de trabalhar. Consegui reduzir em 60% o tempo de criação de protótipos e ainda melhorei a qualidade das entregas. Investimento que se pagou na primeira semana."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="author-info">
+                        <h4>Ana Carolina Silva</h4>
+                        <p>Senior Product Designer @ Startup B2B</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-dark secondary">
+                <i class="fa-solid fa-quote-right quote-icon"></i>
+                <p class="testimonial-text">"A metodologia é incrivelmente prática. Nada de teoria sem aplicação. Saí do workshop com 3 projetos prontos que já implementei na minha empresa. O ROI foi imediato e mensurável."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar secondary">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="author-info">
+                        <h4>Roberto Mendes</h4>
+                        <p>Product Manager @ Tech Enterprise</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-dark">
+                <i class="fa-solid fa-quote-right quote-icon"></i>
+                <p class="testimonial-text">"Estava cético no início, mas a abordagem para não-técnicos é perfeita. Hoje uso IA diariamente no meu trabalho e me tornei referência no time. A melhor decisão da minha carreira."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="author-info">
+                        <h4>Mariana Costa</h4>
+                        <p>UX Lead @ Agência Digital</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRICING -->
+        <div class="section" id="pricing">
+            <h2 class="section-title">
+                <i class="fa-solid fa-tags"></i>
+                Planos e Preços
+            </h2>
+            <p class="section-subtitle">Cards de pricing com destaque para o plano recomendado</p>
+
+            <div class="pricing-grid">
+
+                <div class="pricing-card">
+                    <div class="pricing-badge" style="background: #5A5A5D;">BÁSICO</div>
+                    <h3 class="pricing-name">Workshop Essencial</h3>
+                    <p class="pricing-desc">Perfeito para começar sua jornada</p>
+                    <div class="pricing-value">R$ 997</div>
+                    <p class="pricing-period">pagamento único</p>
+                    <ul class="pricing-features">
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <span>4 semanas de conteúdo</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <span>15 aulas gravadas</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <span>Templates prontos</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <span>Comunidade exclusiva</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <span>Certificado de conclusão</span>
+                        </li>
+                    </ul>
+                    <button class="btn btn-outline-dark" style="width: 100%;">
+                        Começar Agora
+                    </button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">MAIS POPULAR</div>
+                    <h3 class="pricing-name">Professional</h3>
+                    <p class="pricing-desc">Máximo resultado para profissionais</p>
+                    <div class="pricing-value">R$ 2.997</div>
+                    <p class="pricing-period">ou 12x de R$ 297</p>
+                    <ul class="pricing-features">
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <span>Tudo do plano Básico</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <span>12 semanas de programa</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <span>Projeto prático guiado</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <span>4 mentorias ao vivo</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <span>Feedback personalizado</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <span>Certificação internacional</span>
+                        </li>
+                    </ul>
+                    <button class="btn btn-primary-dark" style="width: 100%;">
+                        Garantir Vaga
+                    </button>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-badge" style="background: #388379;">ENTERPRISE</div>
+                    <h3 class="pricing-name">Consultoria</h3>
+                    <p class="pricing-desc">Solução customizada para empresas</p>
+                    <div class="pricing-value" style="font-size: 32px; margin-bottom: 16px;">Sob Consulta</div>
+                    <p class="pricing-period">investimento personalizado</p>
+                    <ul class="pricing-features">
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <span>Tudo do Professional</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <span>In-company training</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <span>Implementação assistida</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <span>Suporte prioritário</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <span>Consultoria estratégica</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <span>Acordo de resultados</span>
+                        </li>
+                    </ul>
+                    <button class="btn btn-secondary-dark" style="width: 100%;">
+                        Agendar Reunião
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- TIMELINE -->
+        <div class="section" id="timeline">
+            <h2 class="section-title">
+                <i class="fa-solid fa-timeline"></i>
+                Timeline / Roadmap
+            </h2>
+            <p class="section-subtitle">Linha do tempo vertical para processos ou cronogramas</p>
+
+            <div class="timeline-dark">
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Semana 1-2: Fundamentos</h3>
+                        <p>Introdução aos conceitos essenciais de IA aplicada ao design. Configuração de ferramentas e primeiro contato com automações práticas.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="border-color: #388379; color: #388379;">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Semana 3-5: Prática Intensiva</h3>
+                        <p>Desenvolvimento de projetos reais. Aplicação direta das técnicas em casos práticos do mercado com feedback constante.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Semana 6-8: Otimização</h3>
+                        <p>Refinamento dos projetos e estratégias avançadas. Foco em escalabilidade e mensuração de resultados.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="border-color: #388379; color: #388379;">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Semana 9-12: Projeto Final</h3>
+                        <p>Desenvolvimento do projeto de certificação. Apresentação para banca e obtenção do certificado internacional.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ALERTS -->
+        <div class="section" id="alerts">
+            <h2 class="section-title">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                Caixas de Alerta
+            </h2>
+            <p class="section-subtitle">Alertas coloridos para destacar informações importantes</p>
+
+            <div class="alert-dark info">
+                <div class="alert-icon">
+                    <i class="fa-solid fa-circle-info"></i>
+                </div>
+                <div class="alert-content">
+                    <h4>Informação Importante</h4>
+                    <p>As inscrições para a próxima turma abrem dia 15 de novembro. Vagas limitadas a 30 participantes para garantir atenção personalizada.</p>
+                </div>
+            </div>
+
+            <div class="alert-dark warning">
+                <div class="alert-icon">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div class="alert-content">
+                    <h4>Atenção: Pré-requisito</h4>
+                    <p>Este workshop é voltado para profissionais com experiência mínima em design ou product management. Não é necessário conhecimento técnico de programação.</p>
+                </div>
+            </div>
+
+            <div class="alert-dark success">
+                <div class="alert-icon">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div class="alert-content">
+                    <h4>Garantia de Satisfação</h4>
+                    <p>Se você não ficar satisfeito com o workshop nas primeiras 2 semanas, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACCORDION -->
+        <div class="section" id="accordion">
+            <h2 class="section-title">
+                <i class="fa-solid fa-list"></i>
+                Accordion / FAQ
+            </h2>
+            <p class="section-subtitle">Perguntas frequentes em formato accordion</p>
+
+            <div class="accordion-dark">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h3>Preciso saber programar para participar?</h3>
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <p>Não! Este workshop foi desenvolvido especificamente para designers e product managers sem conhecimento técnico. Toda a metodologia é focada em ferramentas no-code e low-code que você pode usar imediatamente.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-dark">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h3>Quanto tempo preciso dedicar por semana?</h3>
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <p>Recomendamos 4-6 horas semanais, divididas em 2-3 sessões. O conteúdo é assíncrono, então você estuda no seu ritmo. As mentorias ao vivo são opcionais mas altamente recomendadas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-dark">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h3>O certificado é reconhecido internacionalmente?</h3>
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <p>Sim! O certificado Professional é emitido em parceria com instituições internacionais e é reconhecido por empresas de tecnologia em todo o mundo. Você também recebe um badge digital verificável para LinkedIn.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-dark">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h3>Existe suporte após o término do workshop?</h3>
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <p>Sim! Você tem acesso vitalício à comunidade de alumni, onde pode fazer networking, tirar dúvidas e receber atualizações constantes. Além disso, oferecemos sessões mensais de Q&A para todos os graduados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TABS -->
+        <div class="section" id="tabs">
+            <h2 class="section-title">
+                <i class="fa-solid fa-folder"></i>
+                Tabs / Abas
+            </h2>
+            <p class="section-subtitle">Organize conteúdo em abas navegáveis</p>
+
+            <div class="tabs-dark">
+                <div class="tabs-nav">
+                    <button class="tab-btn active">
+                        <i class="fa-solid fa-book"></i> Currículo
+                    </button>
+                    <button class="tab-btn">
+                        <i class="fa-solid fa-user-tie"></i> Instrutores
+                    </button>
+                    <button class="tab-btn">
+                        <i class="fa-solid fa-briefcase"></i> Projetos
+                    </button>
+                </div>
+
+                <div class="tab-content">
+                    <h3>O que você vai aprender</h3>
+                    <ul class="list-dark">
+                        <li>
+                            <i class="fa-solid fa-check-circle"></i>
+                            <div class="list-content">
+                                <h4>Fundamentos de IA para Design</h4>
+                                <p>Compreenda os conceitos essenciais sem jargões técnicos. Aprenda a identificar oportunidades de aplicação no seu dia a dia.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check-circle"></i>
+                            <div class="list-content">
+                                <h4>Ferramentas No-Code</h4>
+                                <p>Domine as principais plataformas de IA sem escrever uma linha de código. Criação, automação e otimização na prática.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check-circle"></i>
+                            <div class="list-content">
+                                <h4>Metodologia de Implementação</h4>
+                                <p>Framework próprio para integrar IA nos seus processos de design. Do planejamento à mensuração de resultados.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check-circle"></i>
+                            <div class="list-content">
+                                <h4>Cases e Projetos Reais</h4>
+                                <p>Análise de casos de sucesso e desenvolvimento de projetos práticos aplicáveis imediatamente no mercado.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROGRESS BARS -->
+        <div class="section" id="progress">
+            <h2 class="section-title">
+                <i class="fa-solid fa-chart-line"></i>
+                Barras de Progresso
+            </h2>
+            <p class="section-subtitle">Visualize competências ou progresso de forma clara</p>
+
+            <div class="progress-item">
+                <div class="progress-label">
+                    <span><i class="fa-solid fa-brain"></i> IA Aplicada ao Design</span>
+                    <span>95%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: 95%;"></div>
+                </div>
+            </div>
+
+            <div class="progress-item">
+                <div class="progress-label">
+                    <span><i class="fa-solid fa-wand-magic-sparkles"></i> Automação de Processos</span>
+                    <span>88%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: 88%;"></div>
+                </div>
+            </div>
+
+            <div class="progress-item">
+                <div class="progress-label">
+                    <span><i class="fa-solid fa-rocket"></i> Metodologias Ágeis</span>
+                    <span>92%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: 92%;"></div>
+                </div>
+            </div>
+
+            <div class="progress-item">
+                <div class="progress-label">
+                    <span><i class="fa-solid fa-chart-simple"></i> Data-Driven Design</span>
+                    <span>85%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: 85%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CODE EXAMPLE -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fa-solid fa-code"></i>
+                Exemplo de Código CSS
+            </h2>
+            <p class="section-subtitle">Snippet CSS para implementar o dark mode</p>
+
+            <div class="code-dark">
+<span class="code-comment">/* ==================== */</span>
+<span class="code-comment">/* DARK MODE BASE       */</span>
+<span class="code-comment">/* ==================== */</span>
+
+<span class="code-value">:root</span> {
+  <span class="code-property">--bg-primary:</span> <span class="code-value">#1a1a1c</span>;
+  <span class="code-property">--text-primary:</span> <span class="code-value">#F5EFE7</span>;
+  <span class="code-property">--accent-primary:</span> <span class="code-value">#E87A52</span>;
+}
+
+<span class="code-value">body.light-mode</span> {
+  <span class="code-property">--bg-primary:</span> <span class="code-value">#F5EFE7</span>;
+  <span class="code-property">--text-primary:</span> <span class="code-value">#3A3A3C</span>;
+}
+
+<span class="code-value">.dark-card</span> {
+  <span class="code-property">background:</span> <span class="code-value">var(--bg-secondary)</span>;
+  <span class="code-property">color:</span> <span class="code-value">var(--text-primary)</span>;
+  <span class="code-property">transition:</span> <span class="code-value">all 0.3s</span>;
+}
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div style="background:var(--bg-secondary); padding:48px 32px; text-align:center; color:var(--text-secondary); border-top: 2px solid var(--border-color);">
+        <div style="font-size:14px; font-weight:600; margin-bottom:8px;">
+            <i class="fa-solid fa-palette"></i> Design System V3 - Dark Mode Extended
+        </div>
+        <p style="font-size:12px; opacity:0.7;">
+            <i class="fa-solid fa-layer-group"></i> Paleta Equilibrada ·
+            <i class="fa-solid fa-moon"></i> Dark/Light Toggle ·
+            <i class="fa-solid fa-rocket"></i> Menu Lateral
+        </p>
+    </div>
+
+    <script>
+        // Toggle Theme
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+        }
+
+        // Load saved theme
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+            }
+        });
+
+        // Toggle Sidebar (Mobile)
+        function toggleSidebar() {
+            document.body.classList.toggle('sidebar-visible');
+        }
+
+        // Active nav item on scroll
+        const sections = document.querySelectorAll('.section[id]');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('data-section') === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for nav items
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = item.getAttribute('data-section');
+                const targetSection = document.getElementById(targetId);
+
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                    // Close sidebar on mobile after click
+                    if (window.innerWidth <= 1024) {
+                        document.body.classList.remove('sidebar-visible');
+                    }
+                }
+            });
+        });
+
+        // Toggle Accordion
+        function toggleAccordion(header) {
+            const accordion = header.parentElement;
+            const wasActive = accordion.classList.contains('active');
+
+            // Close all accordions
+            document.querySelectorAll('.accordion-dark').forEach(acc => {
+                acc.classList.remove('active');
+            });
+
+            // Toggle current accordion
+            if (!wasActive) {
+                accordion.classList.add('active');
+            }
+        }
+    </script>
+
+</body>
+</html>
