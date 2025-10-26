@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Como Me Comunico - Flávio Freitas</title>
+  <link rel="stylesheet" href="src/css/flavio-ai-design-system.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .main-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: linear-gradient(180deg, rgba(58, 58, 60, 0.98) 0%, rgba(42, 42, 44, 0.95) 100%); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(245, 239, 231, 0.1); padding: var(--space-md) 0; }
+    body.light-mode .main-header { background: linear-gradient(180deg, rgba(245, 239, 231, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%); border-bottom: 1px solid rgba(58, 58, 60, 0.1); }
+    .header-container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); display: flex; justify-content: space-between; align-items: center; }
+    .header-logo { display: flex; align-items: center; gap: var(--space-md); text-decoration: none; color: var(--brand-light); font-size: var(--text-xl); font-weight: var(--font-bold); }
+    body.light-mode .header-logo { color: var(--brand-primary); }
+    .header-logo i { color: var(--brand-accent-1); font-size: 32px; }
+    .main-nav ul { display: flex; list-style: none; gap: var(--space-xl); margin: 0; padding: 0; align-items: center; }
+    .main-nav a { color: rgba(245, 239, 231, 0.8); text-decoration: none; font-weight: var(--font-medium); transition: all var(--transition-fast); padding: var(--space-sm) 0; border-bottom: 2px solid transparent; }
+    body.light-mode .main-nav a { color: var(--brand-surface); }
+    .main-nav a:hover, .main-nav a.active { color: var(--brand-accent-1); border-bottom-color: var(--brand-accent-1); }
+    .header-toggle { width: 48px; height: 48px; background: rgba(245, 239, 231, 0.05); border: 1px solid rgba(245, 239, 231, 0.1); border-radius: var(--radius-md); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all var(--transition-base); }
+    body.light-mode .header-toggle { background: rgba(58, 58, 60, 0.05); border: 1px solid rgba(58, 58, 60, 0.1); }
+    .header-toggle:hover { background: var(--brand-accent-1); }
+    .toggle-icon { font-size: 20px; }
+    .toggle-icon.moon { color: var(--brand-light); }
+    body.light-mode .toggle-icon.moon { display: none; }
+    .toggle-icon.sun { color: var(--brand-primary); display: none; }
+    body.light-mode .toggle-icon.sun { display: block; }
+    .main-content { padding-top: 80px; min-height: 100vh; }
+    body.light-mode { background-color: var(--brand-light); color: var(--brand-primary); }
+    .section { padding: var(--space-3xl) var(--space-lg); }
+    .section-container { max-width: 1200px; margin: 0 auto; }
+    .personality-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-lg); margin: var(--space-xl) 0; }
+    .personality-card { background: linear-gradient(135deg, var(--brand-accent-1) 0%, #d66840 100%); padding: var(--space-xl); border-radius: var(--radius-lg); color: var(--brand-light); text-align: center; transition: all var(--transition-base); }
+    .personality-card:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 12px 32px rgba(232, 122, 82, 0.3); }
+    .personality-card.secondary { background: linear-gradient(135deg, var(--brand-accent-2) 0%, #2d6960 100%); }
+    .personality-card i { font-size: 48px; margin-bottom: var(--space-md); }
+    .personality-card h3 { color: var(--brand-light); margin-bottom: var(--space-sm); }
+    .personality-card p { color: var(--brand-light); opacity: 0.95; font-size: var(--text-sm); margin: 0; }
+    .color-swatch { width: 100%; height: 80px; border-radius: var(--radius-md); margin-bottom: var(--space-md); box-shadow: var(--shadow-md); }
+    .token-card { background: linear-gradient(135deg, #2a2a2c 0%, var(--brand-primary) 100%); padding: var(--space-lg); border-radius: var(--radius-lg); border: 1px solid rgba(245, 239, 231, 0.1); transition: all var(--transition-base); }
+    body.light-mode .token-card { background: white; border: 1px solid rgba(58, 58, 60, 0.15); }
+    .token-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-xl); }
+    .token-name { font-family: 'Courier New', monospace; font-size: var(--text-sm); color: var(--brand-accent-1); margin-bottom: var(--space-xs); }
+    .token-value { font-family: 'Courier New', monospace; font-size: var(--text-xs); color: rgba(245, 239, 231, 0.6); }
+    body.light-mode .token-value { color: var(--brand-surface); }
+    @media (max-width: 768px) { .main-nav { display: none; } }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-container">
+      <a href="index.html" class="header-logo">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span>Flávio Freitas</span>
+      </a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="quem-sou.html">Quem Sou</a></li>
+          <li><a href="o-que-faco.html">O Que Faço</a></li>
+          <li><a href="como-me-comunico.html" class="active">Como Me Comunico</a></li>
+          <li>
+            <button class="header-toggle" onclick="toggleTheme()">
+              <i class="fa-solid fa-moon toggle-icon moon"></i>
+              <i class="fa-solid fa-sun toggle-icon sun"></i>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="hero-dark">
+      <div class="hero-content">
+        <div class="hero-icon"><i class="fa-solid fa-comments"></i></div>
+        <h1>Como Me Comunico</h1>
+        <p>Diretrizes de marca, personalidade, tom de voz e identidade visual</p>
+      </div>
+    </section>
+
+    <!-- Personalidade -->
+    <section class="section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="badge badge-primary"><i class="fa-solid fa-star"></i> Personalidade</span>
+          <h2>Personalidade da Marca</h2>
+          <p>Os traços que definem quem sou e como me expresso</p>
+        </div>
+
+        <h3 style="color: var(--brand-light); margin-bottom: var(--space-lg);">Traços Primários</h3>
+        <div class="personality-grid">
+          <div class="personality-card">
+            <i class="fa-solid fa-lightbulb"></i>
+            <h3>Inovador</h3>
+            <p>Sempre à frente, explorando novas possibilidades e desafiando o status quo da tecnologia.</p>
+          </div>
+
+          <div class="personality-card secondary">
+            <i class="fa-solid fa-bolt"></i>
+            <h3>Transformador</h3>
+            <p>Não me contento com pequenas mudanças. Busco transformação radical, não otimização incremental.</p>
+          </div>
+
+          <div class="personality-card">
+            <i class="fa-solid fa-chess-knight"></i>
+            <h3>Estratégico</h3>
+            <p>Pensamento estruturado e abordagem inteligente para resolver problemas complexos.</p>
+          </div>
+        </div>
+
+        <div style="height: var(--space-xl);"></div>
+
+        <h3 style="color: var(--brand-light); margin-bottom: var(--space-lg);">Características Complementares</h3>
+        <div class="cards-grid-3">
+          <div class="card-vertical dark">
+            <div class="card-icon"><i class="fa-solid fa-handshake"></i></div>
+            <h3 class="card-title">Acessível</h3>
+            <p class="card-text">Comunicação clara e direta, sem jargões desnecessários. IA para todos, não apenas para especialistas.</p>
+          </div>
+
+          <div class="card-vertical dark">
+            <div class="card-icon"><i class="fa-solid fa-wrench"></i></div>
+            <h3 class="card-title">Prático</h3>
+            <p class="card-text">Foco em soluções aplicáveis e resultados reais. Teoria é importante, mas aplicação é essencial.</p>
+          </div>
+
+          <div class="card-vertical dark">
+            <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3 class="card-title">Confiável</h3>
+            <p class="card-text">Transparência, consistência e compromisso com a excelência em tudo que faço.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider-dark"></div>
+
+    <!-- Tom de Voz -->
+    <section class="section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="badge badge-primary"><i class="fa-solid fa-microphone"></i> Tom de Voz</span>
+          <h2>Como Me Expresso</h2>
+          <p>Meu estilo de comunicação com o mercado</p>
+        </div>
+
+        <div class="cards-grid-2">
+          <div class="card-horizontal light">
+            <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="card-content">
+              <h3 class="card-title">Educativo, mas não acadêmico</h3>
+              <p class="card-text">Ensino conceitos complexos de forma simples e aplicável, sem pedantismo ou jargões excessivos.</p>
+            </div>
+          </div>
+
+          <div class="card-horizontal light">
+            <div class="card-icon"><i class="fa-solid fa-fire"></i></div>
+            <div class="card-content">
+              <h3 class="card-title">Inspirador</h3>
+              <p class="card-text">Mostro possibilidades, desperto curiosidade e motivo ação. Quero que meu público se sinta empoderado.</p>
+            </div>
+          </div>
+
+          <div class="card-horizontal light">
+            <div class="card-icon"><i class="fa-solid fa-bullseye"></i></div>
+            <div class="card-content">
+              <h3 class="card-title">Direto</h3>
+              <p class="card-text">Valorizo o tempo do meu público. Vou direto ao ponto, sem rodeios ou floreios desnecessários.</p>
+            </div>
+          </div>
+
+          <div class="card-horizontal light">
+            <div class="card-icon"><i class="fa-solid fa-heart"></i></div>
+            <div class="card-content">
+              <h3 class="card-title">Humano</h3>
+              <p class="card-text">Por trás da tecnologia, sou uma pessoa falando com pessoas. Empatia e conexão genuína sempre.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="height: var(--space-xl);"></div>
+
+        <div class="alert-dark">
+          <div class="alert-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="alert-content">
+            <h4>Exemplo do Meu Tom</h4>
+            <p>"Você não precisa ser desenvolvedor para usar IA. Na verdade, os melhores resultados vêm de quem entende o problema, não de quem entende o código. Vou te mostrar como."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider-dark"></div>
+
+    <!-- Identidade Visual -->
+    <section class="section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="badge badge-primary"><i class="fa-solid fa-palette"></i> Identidade Visual</span>
+          <h2>Paleta de Cores</h2>
+          <p>As cores que definem minha identidade visual</p>
+        </div>
+
+        <div class="cards-grid-3" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+          <div class="token-card">
+            <div class="color-swatch" style="background-color: #3A3A3C;"></div>
+            <div class="token-name">--brand-primary</div>
+            <div class="token-value">#3A3A3C</div>
+            <p style="color: rgba(245, 239, 231, 0.7); font-size: var(--text-xs); margin-top: var(--space-sm);">Cor principal - Fundos escuros e elementos de destaque</p>
+          </div>
+
+          <div class="token-card">
+            <div class="color-swatch" style="background-color: #E87A52;"></div>
+            <div class="token-name">--brand-accent-1</div>
+            <div class="token-value">#E87A52</div>
+            <p style="color: rgba(245, 239, 231, 0.7); font-size: var(--text-xs); margin-top: var(--space-sm);">Cor de ênfase - CTAs, links e interações</p>
+          </div>
+
+          <div class="token-card">
+            <div class="color-swatch" style="background-color: #388379;"></div>
+            <div class="token-name">--brand-accent-2</div>
+            <div class="token-value">#388379</div>
+            <p style="color: rgba(245, 239, 231, 0.7); font-size: var(--text-xs); margin-top: var(--space-sm);">Cor secundária - Variação e elementos de suporte</p>
+          </div>
+
+          <div class="token-card">
+            <div class="color-swatch" style="background-color: #F5EFE7;"></div>
+            <div class="token-name">--brand-light</div>
+            <div class="token-value">#F5EFE7</div>
+            <p style="color: rgba(245, 239, 231, 0.7); font-size: var(--text-xs); margin-top: var(--space-sm);">Cor clara - Fundos claros e textos em dark mode</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider-dark"></div>
+
+    <!-- Recursos -->
+    <section class="section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2>Recursos Completos</h2>
+          <p>Explore mais sobre minha identidade de marca</p>
+        </div>
+
+        <div class="cards-grid-2">
+          <div class="card-horizontal dark">
+            <div class="card-icon"><i class="fa-solid fa-book-open"></i></div>
+            <div class="card-content">
+              <h3 class="card-title">Guia de Marca Completo</h3>
+              <p class="card-text">Posicionamento estratégico detalhado, proposta de valor, público-alvo, casos de uso e muito mais.</p>
+              <div class="card-actions">
+                <a href="examples/guia-de-marca.html" class="btn btn-dark">
+                  <i class="fa-solid fa-arrow-right"></i> Ver Guia
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-horizontal accent">
+            <div class="card-icon"><i class="fa-solid fa-cube"></i></div>
+            <div class="card-content">
+              <h3 class="card-title">Design System</h3>
+              <p class="card-text">Sistema completo com 50+ componentes, design tokens, tipografia e todos os elementos visuais.</p>
+              <div class="card-actions">
+                <a href="examples/design-system-with-sidebar.html" class="btn btn-dark">
+                  <i class="fa-solid fa-arrow-right"></i> Ver Sistema
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-block">
+      <h2>Gostou do Que Viu?</h2>
+      <p>Vamos conversar sobre como podemos trabalhar juntos.</p>
+      <div class="card-actions" style="justify-content: center;">
+        <a href="quem-sou.html" class="btn btn-dark btn-lg">
+          <i class="fa-solid fa-user"></i> Conheça Mais Sobre Mim
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-mode');
+    });
+  </script>
+</body>
+</html>
