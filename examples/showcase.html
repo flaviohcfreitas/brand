@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flavio AI Design System V3 - Showcase</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Design System CSS -->
+  <link rel="stylesheet" href="../src/css/flavio-ai-design-system.css">
+
+  <style>
+    body {
+      padding: var(--space-lg) 0;
+    }
+
+    .showcase-section {
+      margin-bottom: var(--space-3xl);
+    }
+
+    .showcase-title {
+      font-size: var(--text-3xl);
+      color: var(--brand-primary);
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-sm);
+      border-bottom: 3px solid var(--brand-accent-1);
+    }
+
+    .showcase-subtitle {
+      font-size: var(--text-xl);
+      color: var(--brand-surface);
+      margin: var(--space-xl) 0 var(--space-lg) 0;
+    }
+
+    .component-demo {
+      margin-bottom: var(--space-xl);
+    }
+
+    .code-label {
+      font-family: monospace;
+      font-size: var(--text-sm);
+      color: var(--brand-surface);
+      margin-bottom: var(--space-sm);
+      display: block;
+    }
+  </style>
+</head>
+<body class="preload">
+  <div class="container">
+    <!-- Header -->
+    <header class="text-center mb-3xl">
+      <h1 style="font-size: var(--text-4xl); color: var(--brand-primary);">
+        <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--brand-accent-1);"></i>
+        Flavio AI Design System V3
+      </h1>
+      <p style="font-size: var(--text-lg); color: var(--brand-surface);">
+        Demonstração completa de todos os componentes do sistema
+      </p>
+      <div class="flex gap-sm" style="justify-content: center; margin-top: var(--space-lg);">
+        <span class="badge badge-primary"><i class="fa-solid fa-star"></i> Version 1.0.0</span>
+        <span class="badge badge-secondary"><i class="fa-solid fa-palette"></i> 3 Paletas</span>
+        <span class="badge badge-light"><i class="fa-solid fa-layer-group"></i> 50+ Componentes</span>
+      </div>
+    </header>
+
+    <div class="divider-dark"></div>
+
+    <!-- BUTTONS SECTION -->
+    <section class="showcase-section">
+      <h2 class="showcase-title">
+        <i class="fa-solid fa-hand-pointer"></i> Botões
+      </h2>
+
+      <h3 class="showcase-subtitle">Variações de Botões</h3>
+      <div class="component-demo">
+        <div class="flex gap-sm" style="flex-wrap: wrap;">
+          <button class="btn btn-primary">
+            <i class="fa-solid fa-rocket"></i> Primary Button
+          </button>
+          <button class="btn btn-secondary">
+            <i class="fa-solid fa-check"></i> Secondary Button
+          </button>
+          <button class="btn btn-outline">
+            <i class="fa-solid fa-download"></i> Outline Button
+          </button>
+          <button class="btn btn-dark">
+            <i class="fa-solid fa-star"></i> Dark Button
+          </button>
+          <button class="btn btn-light">
+            <i class="fa-solid fa-heart"></i> Light Button
+          </button>
+        </div>
+      </div>
+
+      <h3 class="showcase-subtitle">Tamanhos de Botões</h3>
+      <div class="component-demo">
+        <div class="flex gap-sm items-center" style="flex-wrap: wrap;">
+          <button class="btn btn-primary btn-small">Small Button</button>
+          <button class="btn btn-primary">Regular Button</button>
+          <button class="btn btn-primary btn-large">Large Button</button>
+          <button class="btn btn-primary btn-xl">Extra Large</button>
+        </div>
+      </div>
+
+      <h3 class="showcase-subtitle">Botões Especiais</h3>
+      <div class="component-demo">
+        <div class="flex gap-sm" style="flex-wrap: wrap;">
+          <button class="btn btn-gradient">
+            <i class="fa-solid fa-wand-sparkles"></i> Gradient Button
+          </button>
+          <button class="btn btn-ghost">Ghost Button</button>
+          <button class="btn btn-link">Link Button</button>
+          <button class="btn btn-primary loading">Loading</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- BADGES SECTION -->
+    <section class="showcase-section">
+      <h2 class="showcase-title">
+        <i class="fa-solid fa-tags"></i> Badges
+      </h2>
+
+      <div class="component-demo">
+        <div class="flex gap-sm" style="flex-wrap: wrap;">
+          <span class="badge badge-primary"><i class="fa-solid fa-star"></i> NOVO</span>
+          <span class="badge badge-secondary"><i class="fa-solid fa-fire"></i> EM ALTA</span>
+          <span class="badge badge-light">DESTAQUE</span>
+          <span class="badge badge-dark">PREMIUM</span>
+          <span class="badge badge-outline">OUTLINE</span>
+          <span class="badge" style="background:#4CAF50; color:white;">
+            <i class="fa-solid fa-check"></i> ATIVO
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CARDS SECTION -->
+    <section class="showcase-section">
+      <h2 class="showcase-title">
+        <i class="fa-solid fa-square"></i> Cards
+      </h2>
+
+      <h3 class="showcase-subtitle">Cards Horizontais</h3>
+
+      <div class="component-demo">
+        <span class="code-label">.card-horizontal.light</span>
+        <div class="card-horizontal light">
+          <div class="card-icon">
+            <i class="fa-solid fa-lightbulb"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Workshop de IA Generativa</h3>
+            <p class="card-text">Transforme sua forma de trabalhar em apenas 4 semanas. Reduza 60% do tempo em prototipagem enquanto aumenta a qualidade das entregas.</p>
+            <div class="card-actions">
+              <span class="badge badge-primary">PREMIUM</span>
+              <span class="badge badge-light">4 SEMANAS</span>
+              <button class="btn btn-primary btn-small">
+                <i class="fa-solid fa-arrow-right"></i> Saiba Mais
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-demo">
+        <span class="code-label">.card-horizontal.dark</span>
+        <div class="card-horizontal dark">
+          <div class="card-icon">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Design Exponencial</h3>
+            <p class="card-text">Revolucione seus processos de design com metodologia exclusiva que capacita não-técnicos a dominar ferramentas de IA.</p>
+            <div class="card-actions">
+              <span class="badge badge-primary"><i class="fa-solid fa-fire"></i> NOVO</span>
+              <button class="btn btn-outline-dark">
+                <i class="fa-solid fa-play"></i> Ver Demo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-demo">
+        <span class="code-label">.card-horizontal.accent</span>
+        <div class="card-horizontal accent">
+          <div class="card-icon">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Certificação Professional</h3>
+            <p class="card-text">Torne-se um especialista reconhecido em IA aplicada ao Design. Certificação validada pelo mercado.</p>
+            <div class="card-actions">
+              <span class="badge badge-secondary">CERTIFICADO</span>
+              <button class="btn btn-secondary btn-small">
+                <i class="fa-solid fa-rocket"></i> Inscrever-se
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="showcase-subtitle">Cards Verticais (Grid)</h3>
+      <div class="component-demo">
+        <div class="cards-grid-3">
+          <div class="card-vertical light">
+            <div class="card-icon">
+              <i class="fa-solid fa-rocket"></i>
+            </div>
+            <h3 class="card-title">Velocidade Exponencial</h3>
+            <p class="card-text">Reduza 85% do tempo em tarefas repetitivas e foque no que realmente importa: criatividade e estratégia.</p>
+            <div class="card-actions">
+              <span class="badge badge-primary">CORE</span>
+            </div>
+          </div>
+
+          <div class="card-vertical">
+            <div class="card-icon">
+              <i class="fa-solid fa-brain"></i>
+            </div>
+            <h3 class="card-title">Inteligência Aplicada</h3>
+            <p class="card-text">Aprenda a usar IA de forma estratégica, não apenas operacional. Transforme processos, não otimize tarefas.</p>
+            <div class="card-actions">
+              <span class="badge badge-secondary">MÉTODO</span>
+            </div>
+          </div>
+
+          <div class="card-vertical dark">
+            <div class="card-icon">
+              <i class="fa-solid fa-trophy"></i>
+            </div>
+            <h3 class="card-title">Resultados Garantidos</h3>
+            <p class="card-text">Metodologia comprovada com 500+ profissionais formados. Satisfação garantida ou dinheiro de volta.</p>
+            <div class="card-actions">
+              <span class="badge badge-primary">GARANTIA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- DARK COMPONENTS SECTION -->
+    <section class="showcase-section">
+      <h2 class="showcase-title">
+        <i class="fa-solid fa-moon"></i> Componentes Dark Mode
+      </h2>
+
+      <h3 class="showcase-subtitle">Hero Section Dark</h3>
+      <div class="component-demo">
+        <div class="hero-dark">
+          <div class="hero-content">
+            <div class="hero-icon">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <h2>Transforme seu Design com IA</h2>
+            <p>Metodologia exclusiva que capacita designers e product managers não-técnicos a dominar ferramentas de IA generativa e revolucionar seus processos de trabalho.</p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+              <button class="btn btn-primary-dark btn-large">
+                <i class="fa-solid fa-rocket"></i> Começar Agora
+              </button>
+              <button class="btn btn-outline-dark btn-large">
+                <i class="fa-solid fa-play"></i> Ver Demo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="showcase-subtitle">Stats Grid</h3>
+      <div class="component-demo">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value">
+              <i class="fa-solid fa-users"></i> 500+
+            </div>
+            <div class="stat-label">Designers e PMs formados</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-value secondary">85%</div>
+            <div class="stat-label">Redução média no tempo de prototipagem</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-value">
+              4.9 <i class="fa-solid fa-star" style="font-size: 24px;"></i>
+            </div>
+            <div class="stat-label">Avaliação média (320 reviews)</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-value secondary">3x</div>
+            <div class="stat-label">Aumento em produtividade mensurada</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="showcase-subtitle">Feature Cards Numeradas</h3>
+      <div class="component-demo">
+        <div style="display: grid; gap: var(--space-md);">
+          <div class="feature-card-dark">
+            <div class="feature-number">1</div>
+            <div class="feature-content">
+              <h3>Diagnóstico Personalizado</h3>
+              <p>Avaliamos seu nível atual e mapeamos oportunidades específicas para aplicar IA no seu contexto de trabalho.</p>
+            </div>
+          </div>
+
+          <div class="feature-card-dark secondary">
+            <div class="feature-number">2</div>
+            <div class="feature-content">
+              <h3>Metodologia Hands-On</h3>
+              <p>Aprenda fazendo, com projetos reais do seu dia a dia. Nada de teoria sem aplicação prática.</p>
+            </div>
+          </div>
+
+          <div class="feature-card-dark">
+            <div class="feature-number">3</div>
+            <div class="feature-content">
+              <h3>Transformação Mensurável</h3>
+              <p>Acompanhe seus resultados com métricas claras: tempo economizado, qualidade aumentada, valor entregue.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="showcase-subtitle">Testimonials</h3>
+      <div class="component-demo">
+        <div style="display: grid; gap: var(--space-lg);">
+          <div class="testimonial-dark">
+            <i class="fa-solid fa-quote-right quote-icon"></i>
+            <p class="testimonial-text">"Este workshop transformou completamente minha forma de trabalhar. Reduzi de 6 dias para 4 horas a criação de protótipos de alta fidelidade. O ROI foi imediato."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <div class="author-info">
+                <h4>Ana Carolina Silva</h4>
+                <p>Senior Product Designer @ Startup B2B</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-dark secondary">
+            <i class="fa-solid fa-quote-right quote-icon"></i>
+            <p class="testimonial-text">"Finalmente um curso que fala a língua de quem não é programador. A metodologia é prática e os resultados são mensuráveis. Já apliquei em 5 projetos reais."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <div class="author-info">
+                <h4>Roberto Mendes</h4>
+                <p>Product Manager @ Fintech Scale-up</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="showcase-subtitle">Timeline Vertical</h3>
+      <div class="component-demo">
+        <div class="timeline-dark">
+          <div class="timeline-item">
+            <div class="timeline-dot">
+              <i class="fa-solid fa-rocket"></i>
+            </div>
+            <div class="timeline-content">
+              <h3>Semana 1-2: Fundamentos</h3>
+              <p>Introdução aos conceitos essenciais de IA aplicada ao design. Diagnóstico personalizado e primeiras aplicações práticas.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item secondary">
+            <div class="timeline-dot">
+              <i class="fa-solid fa-cogs"></i>
+            </div>
+            <div class="timeline-content">
+              <h3>Semana 3-4: Aplicação Prática</h3>
+              <p>Implementação em projetos reais. Otimização de workflows e desenvolvimento de metodologia personalizada.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot">
+              <i class="fa-solid fa-trophy"></i>
+            </div>
+            <div class="timeline-content">
+              <h3>Semana 5-6: Masterização</h3>
+              <p>Técnicas avançadas, casos complexos e certificação. Preparação para ser multiplicador na sua organização.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ADDITIONAL COMPONENTS -->
+    <section class="showcase-section">
+      <h2 class="showcase-title">
+        <i class="fa-solid fa-puzzle-piece"></i> Componentes Adicionais
+      </h2>
+
+      <h3 class="showcase-subtitle">Alert Boxes</h3>
+      <div class="component-demo">
+        <div class="alert-dark info">
+          <div class="alert-icon">
+            <i class="fa-solid fa-circle-info"></i>
+          </div>
+          <div class="alert-content">
+            <h4>Informação Importante</h4>
+            <p>As inscrições para a próxima turma abrem dia 15 de fevereiro. Cadastre-se na lista de espera para garantir desconto antecipado.</p>
+          </div>
+        </div>
+
+        <div class="alert-dark success">
+          <div class="alert-icon">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <div class="alert-content">
+            <h4>Garantia de Satisfação</h4>
+            <p>Se você não ficar satisfeito nas primeiras 2 semanas, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.</p>
+          </div>
+        </div>
+
+        <div class="alert-dark warning">
+          <div class="alert-icon">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+          <div class="alert-content">
+            <h4>Atenção: Pré-requisito</h4>
+            <p>Este workshop é voltado para designers e PMs com pelo menos 1 ano de experiência. Conhecimento técnico não é necessário.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="showcase-subtitle">Accordion / FAQ</h3>
+      <div class="component-demo">
+        <div class="accordion-dark">
+          <div class="accordion-header">
+            <h3>Preciso saber programar para participar?</h3>
+            <i class="fa-solid fa-chevron-down accordion-icon"></i>
+          </div>
+          <div class="accordion-content">
+            <p>Não! Este workshop foi desenvolvido especificamente para designers e product managers não-técnicos. Todo conteúdo é apresentado de forma acessível, sem jargões de programação.</p>
+          </div>
+        </div>
+
+        <div class="accordion-dark">
+          <div class="accordion-header">
+            <h3>Qual é a garantia de resultados?</h3>
+            <i class="fa-solid fa-chevron-down accordion-icon"></i>
+          </div>
+          <div class="accordion-content">
+            <p>Oferecemos garantia incondicional de 14 dias. Se você não estiver satisfeito por qualquer motivo, devolvemos 100% do valor investido.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="showcase-subtitle">Progress Bars</h3>
+      <div class="component-demo">
+        <div class="section-dark">
+          <div class="progress-item">
+            <div class="progress-label">
+              <span><i class="fa-solid fa-brain"></i> IA Aplicada ao Design</span>
+              <span>95%</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 95%;"></div>
+            </div>
+          </div>
+
+          <div class="progress-item">
+            <div class="progress-label">
+              <span><i class="fa-solid fa-rocket"></i> Automação de Processos</span>
+              <span>88%</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 88%;"></div>
+            </div>
+          </div>
+
+          <div class="progress-item">
+            <div class="progress-label">
+              <span><i class="fa-solid fa-wand-sparkles"></i> Geração de Conteúdo</span>
+              <span>92%</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 92%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CTA SECTION -->
+    <section class="showcase-section">
+      <div class="cta-block">
+        <h2>Pare de Otimizar. Comece a Transformar.</h2>
+        <p>Junte-se a 500+ designers e PMs que já revolucionaram sua forma de trabalhar. Próxima turma em 15 dias.</p>
+        <div class="btn-group center">
+          <button class="btn btn-light btn-large">
+            <i class="fa-solid fa-rocket"></i> Garantir Minha Vaga
+          </button>
+        </div>
+        <div class="urgency-text">
+          <i class="fa-solid fa-clock"></i>
+          <span>Apenas 30 vagas disponíveis • Garantia de 14 dias</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center mt-3xl py-xl" style="border-top: 1px solid rgba(58,58,60,0.1);">
+      <p style="color: var(--brand-surface); font-size: var(--text-sm);">
+        <i class="fa-solid fa-palette"></i> Flavio AI Design System V3 • Version 1.0.0
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    // Remove preload class after page load
+    window.addEventListener('load', () => {
+      document.body.classList.remove('preload');
+    });
+
+    // Simple accordion toggle
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const accordion = header.parentElement;
+        accordion.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

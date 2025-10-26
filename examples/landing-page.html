@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workshop IA para Design - Flavio AI | Transforme seu Trabalho em 4 Semanas</title>
+  <meta name="description" content="Workshop exclusivo que capacita designers e PMs não-técnicos a dominar IA Generativa. Reduza 85% do tempo em prototipagem. Próxima turma em 15 dias.">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Design System CSS -->
+  <link rel="stylesheet" href="../src/css/flavio-ai-design-system.css">
+
+  <style>
+    body {
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: var(--brand-light);
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid rgba(58, 58, 60, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: var(--z-sticky);
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .logo {
+      font-size: var(--text-xl);
+      font-weight: var(--font-bold);
+      color: var(--brand-primary);
+    }
+
+    .navbar .logo i {
+      color: var(--brand-accent-1);
+    }
+
+    section {
+      padding: var(--space-3xl) 0;
+    }
+
+    .pricing-highlight {
+      background: linear-gradient(135deg, #2a2a2c 0%, var(--brand-primary) 100%);
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: var(--space-xl) 0;
+      }
+    }
+  </style>
+</head>
+<body class="preload">
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        Flavio AI
+      </div>
+      <button class="btn btn-primary btn-small">
+        <i class="fa-solid fa-rocket"></i> Inscrever-se
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section style="background-color: var(--brand-light); padding-top: var(--space-2xl);">
+    <div class="container">
+      <div class="hero-dark">
+        <div class="hero-content">
+          <div class="hero-icon">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+          <div class="mb-lg">
+            <span class="badge badge-primary" style="font-size: 13px;">
+              <i class="fa-solid fa-fire"></i> ÚLTIMAS 30 VAGAS • TURMA FEV/2025
+            </span>
+          </div>
+          <h1>Pare de Otimizar. Comece a Transformar.</h1>
+          <p style="font-size: var(--text-xl); max-width: 700px;">
+            Seu processo de design consome 40 horas por semana mas entrega apenas 10 horas de valor real. Não é sobre trabalhar mais rápido. É sobre redesenhar o que significa fazer design.
+          </p>
+          <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary-dark btn-xl">
+              <i class="fa-solid fa-graduation-cap"></i> Garantir Minha Vaga
+            </button>
+            <button class="btn btn-outline-dark btn-xl">
+              <i class="fa-solid fa-play"></i> Ver Depoimentos
+            </button>
+          </div>
+          <p style="font-size: 14px; opacity: 0.7; margin-top: 24px;">
+            <i class="fa-solid fa-shield-check"></i>
+            Garantia incondicional de 14 dias • Certificação inclusa • Comunidade vitalícia
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section style="background-color: var(--brand-light);">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value">
+            <i class="fa-solid fa-users"></i> 500+
+          </div>
+          <div class="stat-label">Designers e PMs formados desde 2023</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value secondary">85%</div>
+          <div class="stat-label">Redução média no tempo de prototipagem</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">
+            4.9 <i class="fa-solid fa-star" style="font-size: 28px;"></i>
+          </div>
+          <div class="stat-label">Avaliação média (320 reviews verificados)</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value secondary">3x</div>
+          <div class="stat-label">Multiplicador de produtividade mensurada</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM / SOLUTION -->
+  <section style="background-color: var(--brand-light);">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-primary section-badge">O PROBLEMA REAL</span>
+        <h2>Você Não Precisa de Mais Ferramentas. Você Precisa de uma Nova Metodologia.</h2>
+        <p>A maioria dos cursos de IA ensina ferramentas. Nós ensinamos transformação de processos.</p>
+      </div>
+
+      <div class="cards-grid-2">
+        <div class="card-horizontal light">
+          <div class="card-icon" style="background-color: rgba(239, 68, 68, 0.1); color: #ef4444;">
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Abordagem Tradicional</h3>
+            <p class="card-text">
+              <strong>❌ Foco em ferramentas isoladas</strong><br>
+              ❌ Teoria sem aplicação prática<br>
+              ❌ Promessas de "1 clique" irrealistas<br>
+              ❌ Conteúdo genérico para programadores<br>
+              ❌ Sem acompanhamento pós-curso
+            </p>
+          </div>
+        </div>
+
+        <div class="card-horizontal accent">
+          <div class="card-icon">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Metodologia Flavio AI</h3>
+            <p class="card-text">
+              <strong>✅ Transformação de processos completos</strong><br>
+              ✅ Projetos reais do seu dia a dia<br>
+              ✅ Resultados mensuráveis em 4 semanas<br>
+              ✅ Linguagem para não-técnicos<br>
+              ✅ Comunidade e mentoria vitalícia
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHODOLOGY / FEATURES -->
+  <section style="background: linear-gradient(135deg, var(--brand-primary) 0%, #2a2a2c 100%);">
+    <div class="container">
+      <div class="section-header section-header-dark">
+        <span class="badge badge-primary section-badge">METODOLOGIA EXCLUSIVA</span>
+        <h2>Como Funciona o Workshop</h2>
+        <p>4 semanas intensivas de transformação. Não é curso, é imersão prática.</p>
+      </div>
+
+      <div style="display: grid; gap: var(--space-md); max-width: 900px; margin: 0 auto;">
+        <div class="feature-card-dark">
+          <div class="feature-number">1</div>
+          <div class="feature-content">
+            <h3>Semana 1-2: Fundamentos e Diagnóstico</h3>
+            <p>Mapeamos seu contexto atual, identificamos gargalos e aplicamos IA nas primeiras tarefas reais. Você sai com 3 processos já automatizados.</p>
+          </div>
+        </div>
+
+        <div class="feature-card-dark secondary">
+          <div class="feature-number">2</div>
+          <div class="feature-content">
+            <h3>Semana 3-4: Aplicação Avançada</h3>
+            <p>Redesenhamos workflows completos usando IA. Aprenda a orquestrar múltiplas ferramentas para resultados exponenciais, não incrementais.</p>
+          </div>
+        </div>
+
+        <div class="feature-card-dark">
+          <div class="feature-number">3</div>
+          <div class="feature-content">
+            <h3>Semana 5-6: Masterização e Certificação</h3>
+            <p>Técnicas avançadas, cases complexos e projeto final. Você se torna multiplicador certificado, pronto para liderar transformação na sua organização.</p>
+          </div>
+        </div>
+
+        <div class="feature-card-dark secondary">
+          <div class="feature-number">4</div>
+          <div class="feature-content">
+            <h3>Pós-Workshop: Comunidade Vitalícia</h3>
+            <p>Acesso permanente a atualizações, eventos exclusivos e rede de profissionais transformadores. Seu investimento cresce com você.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES / RESULTS -->
+  <section style="background-color: var(--brand-light);">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-secondary section-badge">RESULTADOS REAIS</span>
+        <h2>Transformações Mensuradas</h2>
+        <p>Casos reais de alunos que revolucionaram seus processos de trabalho.</p>
+      </div>
+
+      <div style="display: grid; gap: var(--space-lg); max-width: 1000px; margin: 0 auto;">
+        <div class="card-horizontal dark">
+          <div class="card-icon">
+            <i class="fa-solid fa-rocket"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Ana Carolina Silva • Senior Product Designer</h3>
+            <p class="card-text" style="font-size: var(--text-lg); margin-bottom: var(--space-md);">
+              <strong style="color: var(--brand-accent-1);">De 6 dias para 4 horas</strong> na criação de protótipos de alta fidelidade
+            </p>
+            <p class="card-text">
+              "Reduzi 96% do tempo em prototipagem. O que levava uma semana inteira agora levo uma manhã. Consegui assumir 2 projetos extras sem aumentar minha carga de trabalho."
+            </p>
+            <div class="card-actions">
+              <span class="badge badge-primary">STARTUP B2B</span>
+              <span class="badge badge-light">6 SEMANAS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-horizontal dark">
+          <div class="card-icon">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Roberto Mendes • Product Manager</h3>
+            <p class="card-text" style="font-size: var(--text-lg); margin-bottom: var(--space-md);">
+              <strong style="color: var(--brand-accent-2);">3x aumento</strong> em velocidade de validação de hipóteses
+            </p>
+            <p class="card-text">
+              "Apliquei a metodologia em 5 projetos diferentes. O tempo de research e análise caiu 70%. Meu time está validando ideias 3x mais rápido que antes."
+            </p>
+            <div class="card-actions">
+              <span class="badge badge-secondary">FINTECH SCALE-UP</span>
+              <span class="badge badge-light">4 SEMANAS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-horizontal dark">
+          <div class="card-icon">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Mariana Costa • UX/UI Designer</h3>
+            <p class="card-text" style="font-size: var(--text-lg); margin-bottom: var(--space-md);">
+              <strong style="color: var(--brand-accent-1);">ROI de 450%</strong> nos primeiros 2 meses
+            </p>
+            <p class="card-text">
+              "O workshop se pagou em menos de um mês. Consegui aumentar meu ticket médio em 180% oferecendo entregas mais completas no mesmo prazo."
+            </p>
+            <div class="card-actions">
+              <span class="badge badge-primary">FREELANCER</span>
+              <span class="badge badge-light">8 SEMANAS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section style="background: linear-gradient(135deg, var(--brand-primary) 0%, #2a2a2c 100%);">
+    <div class="container">
+      <div class="section-header section-header-dark">
+        <span class="badge badge-primary section-badge">DEPOIMENTOS</span>
+        <h2>O Que Dizem Nossos Alunos</h2>
+      </div>
+
+      <div class="cards-grid-2">
+        <div class="testimonial-dark">
+          <i class="fa-solid fa-quote-right quote-icon"></i>
+          <p class="testimonial-text">"Este workshop transformou completamente minha forma de trabalhar. Reduzi de 6 dias para 4 horas a criação de protótipos de alta fidelidade. O ROI foi imediato."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Ana Carolina Silva</h4>
+              <p>Senior Product Designer @ Startup B2B</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-dark secondary">
+          <i class="fa-solid fa-quote-right quote-icon"></i>
+          <p class="testimonial-text">"Finalmente um curso que fala a língua de quem não é programador. A metodologia é prática e os resultados são mensuráveis. Já apliquei em 5 projetos reais."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Roberto Mendes</h4>
+              <p>Product Manager @ Fintech Scale-up</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-dark">
+          <i class="fa-solid fa-quote-right quote-icon"></i>
+          <p class="testimonial-text">"O melhor investimento da minha carreira. Em 2 meses consegui aumentar meu ticket médio em 180% e reduzir minha carga de trabalho em 40%. Surreal."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Mariana Costa</h4>
+              <p>UX/UI Designer Freelancer</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-dark secondary">
+          <i class="fa-solid fa-quote-right quote-icon"></i>
+          <p class="testimonial-text">"A comunidade é tão valiosa quanto o conteúdo. Fiz conexões incríveis e aprendo algo novo toda semana. Valeu cada centavo."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Paulo Ferreira</h4>
+              <p>Design Lead @ E-commerce</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-highlight">
+    <div class="container">
+      <div class="section-header section-header-dark">
+        <span class="badge badge-primary section-badge">INVESTIMENTO</span>
+        <h2>Escolha Seu Plano</h2>
+        <p>Transformação garantida ou seu dinheiro de volta em 14 dias.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-name">Essencial</div>
+          <div class="pricing-desc">Para quem quer começar a transformação</div>
+          <div class="pricing-value">R$ 1.497</div>
+          <div class="pricing-period">ou 10x de R$ 149,70</div>
+          <ul class="pricing-features">
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span>6 semanas de workshop intensivo</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span>Acesso vitalício ao conteúdo</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span>Comunidade exclusiva de alunos</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span>Certificado de conclusão</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span>Suporte via comunidade</span>
+            </li>
+          </ul>
+          <button class="btn btn-outline-dark" style="width: 100%;">
+            Começar Agora
+          </button>
+        </div>
+
+        <div class="pricing-card featured">
+          <div class="pricing-badge">MAIS POPULAR</div>
+          <div class="pricing-name">Professional</div>
+          <div class="pricing-desc">Máximo resultado com mentoria individual</div>
+          <div class="pricing-value">R$ 2.997</div>
+          <div class="pricing-period">ou 12x de R$ 297</div>
+          <ul class="pricing-features">
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span>Tudo do plano Essencial</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span><strong>4 sessões de mentoria 1:1</strong></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span><strong>Análise personalizada dos seus projetos</strong></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span><strong>Acesso prioritário a eventos</strong></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span>Certificação Professional</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span>Suporte prioritário no Slack</span>
+            </li>
+          </ul>
+          <button class="btn btn-primary-dark" style="width: 100%;">
+            Garantir Vaga
+          </button>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-name">Enterprise</div>
+          <div class="pricing-desc">Para times e organizações</div>
+          <div class="pricing-value">Consulte</div>
+          <div class="pricing-period">customizado para sua equipe</div>
+          <ul class="pricing-features">
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span>Tudo do plano Professional</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span><strong>Workshop in-company</strong></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span><strong>Customização para seu contexto</strong></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span><strong>Implementação assistida</strong></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span>Múltiplas licenças com desconto</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span>SLA de suporte dedicado</span>
+            </li>
+          </ul>
+          <button class="btn btn-outline-dark" style="width: 100%;">
+            Falar com Consultor
+          </button>
+        </div>
+      </div>
+
+      <div class="mt-2xl text-center">
+        <div class="alert-dark success" style="max-width: 700px; margin: 0 auto;">
+          <div class="alert-icon">
+            <i class="fa-solid fa-shield-check"></i>
+          </div>
+          <div class="alert-content">
+            <h4>Garantia Incondicional de 14 Dias</h4>
+            <p>Se você não ficar satisfeito por qualquer motivo nos primeiros 14 dias, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia. Simples assim.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="background-color: var(--brand-light);">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-secondary section-badge">DÚVIDAS FREQUENTES</span>
+        <h2>Perguntas e Respostas</h2>
+      </div>
+
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div class="accordion-dark">
+          <div class="accordion-header">
+            <h3>Preciso saber programar para participar?</h3>
+            <i class="fa-solid fa-chevron-down accordion-icon"></i>
+          </div>
+          <div class="accordion-content">
+            <p>Não! Este workshop foi desenvolvido especificamente para designers e product managers não-técnicos. Todo conteúdo é apresentado de forma acessível, sem jargões de programação. Se você sabe usar Figma ou ferramentas de design, já tem o suficiente.</p>
+          </div>
+        </div>
+
+        <div class="accordion-dark">
+          <div class="accordion-header">
+            <h3>Quanto tempo por semana eu preciso dedicar?</h3>
+            <i class="fa-solid fa-chevron-down accordion-icon"></i>
+          </div>
+          <div class="accordion-content">
+            <p>Recomendamos de 6 a 8 horas semanais: 2 horas de aulas ao vivo (terça e quinta às 19h), 2-3 horas de prática guiada e 2-3 horas aplicando nos seus próprios projetos. Todas as aulas ficam gravadas para assistir no seu ritmo.</p>
+          </div>
+        </div>
+
+        <div class="accordion-dark">
+          <div class="accordion-header">
+            <h3>Qual é a garantia de resultados?</h3>
+            <i class="fa-solid fa-chevron-down accordion-icon"></i>
+          </div>
+          <div class="accordion-content">
+            <p>Oferecemos garantia incondicional de 14 dias. Se você não estiver satisfeito por qualquer motivo, devolvemos 100% do valor investido. Além disso, 94% dos nossos alunos reportam resultados mensuráveis em até 30 dias.</p>
+          </div>
+        </div>
+
+        <div class="accordion-dark">
+          <div class="accordion-header">
+            <h3>As aulas são ao vivo ou gravadas?</h3>
+            <i class="fa-solid fa-chevron-down accordion-icon"></i>
+          </div>
+          <div class="accordion-content">
+            <p>Híbrido! Temos 2 aulas ao vivo por semana com interação direta, Q&A e exercícios práticos. Todas ficam gravadas e disponíveis vitaliciamente. Você também tem acesso a uma biblioteca de +50 horas de conteúdo complementar gravado.</p>
+          </div>
+        </div>
+
+        <div class="accordion-dark">
+          <div class="accordion-header">
+            <h3>Vou receber certificado?</h3>
+            <i class="fa-solid fa-chevron-down accordion-icon"></i>
+          </div>
+          <div class="accordion-content">
+            <p>Sim! Ao concluir o workshop e o projeto final, você recebe a Certificação Flavio AI em IA Aplicada ao Design, reconhecida por +100 empresas parceiras. No plano Professional, você também pode fazer a prova para Certificação Advanced.</p>
+          </div>
+        </div>
+
+        <div class="accordion-dark">
+          <div class="accordion-header">
+            <h3>E se eu perder uma aula ao vivo?</h3>
+            <i class="fa-solid fa-chevron-down accordion-icon"></i>
+          </div>
+          <div class="accordion-content">
+            <p>Sem problemas! Todas as aulas são gravadas e disponibilizadas em até 2 horas após o término. Você também pode enviar dúvidas para serem respondidas na próxima aula ou na comunidade no Slack.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section style="background-color: var(--brand-light); padding-bottom: var(--space-3xl);">
+    <div class="container">
+      <div class="cta-block">
+        <h2>Próxima Turma em 15 Dias. Apenas 30 Vagas.</h2>
+        <p>Junte-se a 500+ designers e PMs que já revolucionaram sua forma de trabalhar. Transformação garantida ou seu dinheiro de volta.</p>
+        <div class="btn-group center">
+          <button class="btn btn-light btn-xl">
+            <i class="fa-solid fa-rocket"></i> Garantir Minha Vaga Agora
+          </button>
+        </div>
+        <div class="urgency-text">
+          <i class="fa-solid fa-clock"></i>
+          <span>Inscrições encerram em 13 dias • Garantia incondicional de 14 dias</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background: linear-gradient(135deg, var(--brand-primary) 0%, #2a2a2c 100%); padding: var(--space-2xl) 0;">
+    <div class="container">
+      <div style="text-align: center; color: var(--brand-light);">
+        <div class="mb-lg">
+          <h3 style="color: var(--brand-light); font-size: var(--text-2xl);">
+            <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--brand-accent-1);"></i>
+            Flavio AI
+          </h3>
+          <p style="color: rgba(245,239,231,0.7); max-width: 500px; margin: var(--space-md) auto;">
+            Democratizando inteligência artificial para designers e product managers não-técnicos.
+          </p>
+        </div>
+
+        <div class="flex gap-md" style="justify-content: center; margin-bottom: var(--space-lg);">
+          <a href="#" style="color: var(--brand-light); font-size: 24px;">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a href="#" style="color: var(--brand-light); font-size: 24px;">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#" style="color: var(--brand-light); font-size: 24px;">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a href="#" style="color: var(--brand-light); font-size: 24px;">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </div>
+
+        <div class="divider" style="max-width: 600px; margin: var(--space-xl) auto;"></div>
+
+        <p style="color: rgba(245,239,231,0.5); font-size: var(--text-sm);">
+          © 2025 Flavio AI. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Remove preload class after page load
+    window.addEventListener('load', () => {
+      document.body.classList.remove('preload');
+    });
+
+    // Accordion toggle
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const accordion = header.parentElement;
+
+        // Close all other accordions
+        document.querySelectorAll('.accordion-dark').forEach(acc => {
+          if (acc !== accordion) {
+            acc.classList.remove('active');
+          }
+        });
+
+        // Toggle current accordion
+        accordion.classList.toggle('active');
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

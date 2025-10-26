@@ -1,0 +1,365 @@
+/**
+ * FLAVIO AI DESIGN SYSTEM V3
+ * Card Components
+ */
+
+/* ==========================================
+   BASE CARD STYLES
+   ========================================== */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+/* ==========================================
+   HORIZONTAL CARDS (Full-Width)
+   ========================================== */
+
+.card-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  background-color: #ffffff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+}
+
+.card-horizontal:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+}
+
+/* Card Icon */
+.card-horizontal .card-icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(232, 122, 82, 0.1);
+  border-radius: var(--radius-lg);
+  color: var(--brand-accent-1);
+  font-size: 32px;
+}
+
+/* Card Content */
+.card-horizontal .card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.card-horizontal .card-title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--brand-primary);
+  margin: 0;
+}
+
+.card-horizontal .card-text {
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  color: var(--brand-surface);
+  margin: 0;
+}
+
+.card-horizontal .card-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+/* ==========================================
+   HORIZONTAL CARD VARIANTS
+   ========================================== */
+
+/* Light Card */
+.card-horizontal.light {
+  background-color: var(--brand-light);
+  border: 1px solid rgba(58, 58, 60, 0.08);
+}
+
+.card-horizontal.light .card-icon {
+  background-color: rgba(232, 122, 82, 0.15);
+  color: var(--brand-accent-1);
+}
+
+/* Dark Card */
+.card-horizontal.dark {
+  background: linear-gradient(135deg, var(--brand-primary) 0%, #2a2a2c 100%);
+  border: 1px solid rgba(245, 239, 231, 0.1);
+}
+
+.card-horizontal.dark .card-title {
+  color: var(--brand-light);
+}
+
+.card-horizontal.dark .card-text {
+  color: rgba(245, 239, 231, 0.8);
+}
+
+.card-horizontal.dark .card-icon {
+  background-color: rgba(232, 122, 82, 0.2);
+  color: var(--brand-accent-1);
+}
+
+/* Accent Card */
+.card-horizontal.accent {
+  background-color: #ffffff;
+  border: 2px solid var(--brand-accent-2);
+}
+
+.card-horizontal.accent .card-icon {
+  background-color: rgba(56, 131, 121, 0.15);
+  color: var(--brand-accent-2);
+}
+
+.card-horizontal.accent:hover {
+  border-color: var(--brand-accent-1);
+}
+
+/* ==========================================
+   VERTICAL CARDS (Grid Layout)
+   ========================================== */
+
+.card-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-xl);
+  background-color: #ffffff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  height: 100%;
+}
+
+.card-vertical:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+}
+
+.card-vertical .card-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(232, 122, 82, 0.1);
+  border-radius: var(--radius-xl);
+  color: var(--brand-accent-1);
+  font-size: 40px;
+  margin-bottom: var(--space-md);
+}
+
+.card-vertical .card-title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--brand-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.card-vertical .card-text {
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  color: var(--brand-surface);
+  margin-bottom: var(--space-md);
+  flex: 1;
+}
+
+.card-vertical .card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  width: 100%;
+}
+
+/* ==========================================
+   VERTICAL CARD VARIANTS
+   ========================================== */
+
+.card-vertical.light {
+  background-color: var(--brand-light);
+  border: 1px solid rgba(58, 58, 60, 0.08);
+}
+
+.card-vertical.dark {
+  background: linear-gradient(135deg, var(--brand-primary) 0%, #2a2a2c 100%);
+  border: 1px solid rgba(245, 239, 231, 0.1);
+}
+
+.card-vertical.dark .card-title {
+  color: var(--brand-light);
+}
+
+.card-vertical.dark .card-text {
+  color: rgba(245, 239, 231, 0.8);
+}
+
+.card-vertical.dark .card-icon {
+  background-color: rgba(232, 122, 82, 0.2);
+}
+
+.card-vertical.accent {
+  background-color: #ffffff;
+  border: 2px solid var(--brand-accent-2);
+}
+
+.card-vertical.accent .card-icon {
+  background-color: rgba(56, 131, 121, 0.15);
+  color: var(--brand-accent-2);
+}
+
+/* ==========================================
+   CARD GRIDS
+   ========================================== */
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.cards-grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.cards-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.cards-grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* ==========================================
+   FEATURE CARDS (Dark Mode)
+   ========================================== */
+
+.feature-card-dark {
+  display: flex;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+  background: linear-gradient(135deg, #2a2a2c 0%, var(--brand-primary) 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(245, 239, 231, 0.1);
+  transition: all var(--transition-base);
+}
+
+.feature-card-dark:hover {
+  border-color: var(--brand-accent-1);
+  box-shadow: 0 8px 32px rgba(232, 122, 82, 0.2);
+  transform: translateY(-2px);
+}
+
+.feature-card-dark .feature-number {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--brand-accent-1);
+  color: var(--brand-light);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  border-radius: var(--radius-lg);
+}
+
+.feature-card-dark.secondary .feature-number {
+  background-color: var(--brand-accent-2);
+}
+
+.feature-card-dark .feature-content h3 {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--brand-light);
+  margin-bottom: var(--space-sm);
+}
+
+.feature-card-dark .feature-content p {
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  color: rgba(245, 239, 231, 0.8);
+  margin: 0;
+}
+
+/* ==========================================
+   IMAGE CARDS
+   ========================================== */
+
+.card-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.card-image:hover img {
+  transform: scale(1.05);
+}
+
+.card-image .card-content {
+  padding: var(--space-lg);
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 768px) {
+  .card-horizontal {
+    flex-direction: column;
+    gap: var(--space-md);
+    padding: var(--space-md);
+  }
+
+  .card-horizontal .card-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 28px;
+  }
+
+  .card-vertical {
+    padding: var(--space-lg);
+  }
+
+  .card-vertical .card-icon {
+    width: 64px;
+    height: 64px;
+    font-size: 32px;
+  }
+
+  .cards-grid,
+  .cards-grid-2,
+  .cards-grid-3,
+  .cards-grid-4 {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .feature-card-dark {
+    flex-direction: column;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+  }
+}

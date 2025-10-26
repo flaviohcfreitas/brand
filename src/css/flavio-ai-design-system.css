@@ -1,0 +1,48 @@
+/**
+ * FLAVIO AI DESIGN SYSTEM V3
+ * Main CSS Entry Point
+ * Version: 1.0.0
+ *
+ * Import order matters:
+ * 1. Variables (tokens)
+ * 2. Base styles (reset, typography, utilities)
+ * 3. Components (buttons, cards, etc.)
+ */
+
+@import url('variables.css');
+@import url('base.css');
+@import url('buttons.css');
+@import url('cards.css');
+@import url('dark-components.css');
+@import url('components.css');
+
+/**
+ * Additional global styles
+ */
+
+:root {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: var(--brand-accent-1);
+  color: var(--brand-light);
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--brand-accent-1);
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition-property: background-color, border-color, color;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+}
+
+/* Disable transitions on page load */
+.preload * {
+  transition: none !important;
+}
