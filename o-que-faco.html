@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Que Faço - Flávio Freitas</title>
+  <link rel="stylesheet" href="src/css/flavio-ai-design-system.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .main-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: linear-gradient(180deg, rgba(58, 58, 60, 0.98) 0%, rgba(42, 42, 44, 0.95) 100%); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(245, 239, 231, 0.1); padding: var(--space-md) 0; }
+    body.light-mode .main-header { background: linear-gradient(180deg, rgba(245, 239, 231, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%); border-bottom: 1px solid rgba(58, 58, 60, 0.1); }
+    .header-container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); display: flex; justify-content: space-between; align-items: center; }
+    .header-logo { display: flex; align-items: center; gap: var(--space-md); text-decoration: none; color: var(--brand-light); font-size: var(--text-xl); font-weight: var(--font-bold); }
+    body.light-mode .header-logo { color: var(--brand-primary); }
+    .header-logo i { color: var(--brand-accent-1); font-size: 32px; }
+    .main-nav ul { display: flex; list-style: none; gap: var(--space-xl); margin: 0; padding: 0; align-items: center; }
+    .main-nav a { color: rgba(245, 239, 231, 0.8); text-decoration: none; font-weight: var(--font-medium); transition: all var(--transition-fast); padding: var(--space-sm) 0; border-bottom: 2px solid transparent; }
+    body.light-mode .main-nav a { color: var(--brand-surface); }
+    .main-nav a:hover, .main-nav a.active { color: var(--brand-accent-1); border-bottom-color: var(--brand-accent-1); }
+    .header-toggle { width: 48px; height: 48px; background: rgba(245, 239, 231, 0.05); border: 1px solid rgba(245, 239, 231, 0.1); border-radius: var(--radius-md); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all var(--transition-base); }
+    body.light-mode .header-toggle { background: rgba(58, 58, 60, 0.05); border: 1px solid rgba(58, 58, 60, 0.1); }
+    .header-toggle:hover { background: var(--brand-accent-1); }
+    .toggle-icon { font-size: 20px; }
+    .toggle-icon.moon { color: var(--brand-light); }
+    body.light-mode .toggle-icon.moon { display: none; }
+    .toggle-icon.sun { color: var(--brand-primary); display: none; }
+    body.light-mode .toggle-icon.sun { display: block; }
+    .main-content { padding-top: 80px; min-height: 100vh; }
+    body.light-mode { background-color: var(--brand-light); color: var(--brand-primary); }
+    .section { padding: var(--space-3xl) var(--space-lg); }
+    .section-container { max-width: 1200px; margin: 0 auto; }
+    @media (max-width: 768px) { .main-nav { display: none; } }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-container">
+      <a href="index.html" class="header-logo">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span>Flávio Freitas</span>
+      </a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="quem-sou.html">Quem Sou</a></li>
+          <li><a href="o-que-faco.html" class="active">O Que Faço</a></li>
+          <li><a href="como-me-comunico.html">Como Me Comunico</a></li>
+          <li>
+            <button class="header-toggle" onclick="toggleTheme()">
+              <i class="fa-solid fa-moon toggle-icon moon"></i>
+              <i class="fa-solid fa-sun toggle-icon sun"></i>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="hero-dark">
+      <div class="hero-content">
+        <div class="hero-icon"><i class="fa-solid fa-rocket"></i></div>
+        <h1>O Que Faço</h1>
+        <p>Os 3 Pilares da Transformação através da IA e como entrego valor real</p>
+      </div>
+    </section>
+
+    <!-- 3 Pilares -->
+    <section class="section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="badge badge-primary"><i class="fa-solid fa-columns"></i> Os 3 Pilares</span>
+          <h2>Pilares da Transformação</h2>
+          <p>Como a IA amplifica o potencial humano em três frentes estratégicas</p>
+        </div>
+
+        <div class="cards-grid-3">
+          <div class="feature-card-dark">
+            <div class="feature-number">1</div>
+            <div class="feature-content">
+              <h3>Design de Experiências</h3>
+              <p>Construo agentes de IA como pontos de contato inteligentes com seus clientes. UX aplicado à IA para criar experiências que melhoram a percepção da marca e resolvem problemas reais.</p>
+              <ul class="list-checkmark" style="text-align: left; margin-top: var(--space-md); color: rgba(245, 239, 231, 0.8);">
+                <li>Agentes conversacionais personalizados</li>
+                <li>Assistentes virtuais inteligentes</li>
+                <li>Onboarding automatizado</li>
+                <li>Interfaces de voz</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="feature-card-dark secondary">
+            <div class="feature-number">2</div>
+            <div class="feature-content">
+              <h3>Redesenho Operacional</h3>
+              <p>Não otimizo processos - eu os reconstr uo do zero. Com design de serviços e IA, crio modelos operacionais fundamentalmente mais eficientes, não apenas mais rápidos.</p>
+              <ul class="list-checkmark" style="text-align: left; margin-top: var(--space-md); color: rgba(245, 239, 231, 0.8);">
+                <li>Automação de aprovações e workflows</li>
+                <li>Processamento inteligente de documentos</li>
+                <li>Orquestração de processos complexos</li>
+                <li>Otimização de supply chain</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="feature-card-dark">
+            <div class="feature-number">3</div>
+            <div class="feature-content">
+              <h3>Inteligência Estratégica</h3>
+              <p>Uso agentes como seu time de research e analytics. Transformo dados em insights acionáveis que fortalecem decisões estratégicas e revelam oportunidades ocultas.</p>
+              <ul class="list-checkmark" style="text-align: left; margin-top: var(--space-md); color: rgba(245, 239, 231, 0.8);">
+                <li>Análise preditiva de mercado</li>
+                <li>Research automatizado de tendências</li>
+                <li>Scoring e análise de risco</li>
+                <li>Insights de comportamento</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider-dark"></div>
+
+    <!-- Como Faço -->
+    <section class="section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="badge badge-primary"><i class="fa-solid fa-gears"></i> Metodologia</span>
+          <h2>Como Faço: Da Ideia à Operação</h2>
+          <p>Minha abordagem estruturada para entregar transformação real</p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker">1</div>
+            <div class="timeline-content">
+              <h3>Discovery & Diagnóstico</h3>
+              <p>Mergulho profundo nos seus processos, dores e oportunidades. Mapeio onde a IA pode gerar mais valor e defino métricas claras de sucesso.</p>
+              <div class="badge badge-light">2-3 semanas</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">2</div>
+            <div class="timeline-content">
+              <h3>MVP & Prototipagem</h3>
+              <p>Desenvolvo um protótipo funcional para validar a solução. Você vê resultados reais rapidamente, sem investimento massivo inicial.</p>
+              <div class="badge badge-light">60-90 dias</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">3</div>
+            <div class="timeline-content">
+              <h3>Desenvolvimento Completo</h3>
+              <p>Construo a solução completa, integrada aos seus sistemas, com foco em escalabilidade e manutenibilidade.</p>
+              <div class="badge badge-light">2-4 meses</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">4</div>
+            <div class="timeline-content">
+              <h3>Deploy & Otimização</h3>
+              <p>Implantação em produção com monitoramento contínuo. Otimizo com base em dados reais de uso e feedback dos usuários.</p>
+              <div class="badge badge-light">Contínuo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider-dark"></div>
+
+    <!-- Modelo de Trabalho -->
+    <section class="section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="badge badge-primary"><i class="fa-solid fa-handshake"></i> Modelo de Trabalho</span>
+          <h2>Como Trabalhamos Juntos</h2>
+          <p>Flexibilidade para atender diferentes necessidades e estágios</p>
+        </div>
+
+        <div class="cards-grid-2">
+          <div class="card-horizontal dark">
+            <div class="card-icon"><i class="fa-solid fa-rocket"></i></div>
+            <div class="card-content">
+              <h3 class="card-title">Projetos de Transformação</h3>
+              <p class="card-text">Desenvolvimento customizado de agentes de IA para seus desafios únicos. Modelo de projeto com escopo e entregáveis claros. Ideal para quem quer uma solução sob medida.</p>
+              <ul class="list-checkmark">
+                <li>Discovery completo</li>
+                <li>MVP em 60-90 dias</li>
+                <li>Desenvolvimento full-stack</li>
+                <li>Deploy em produção</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card-horizontal accent">
+            <div class="card-icon"><i class="fa-solid fa-sync"></i></div>
+            <div class="card-content">
+              <h3 class="card-title">Agentes Gerenciados</h3>
+              <p class="card-text">Suporte, monitoramento e otimização contínua dos agentes. Modelo de assinatura mensal para garantir que a solução evolua com seu negócio.</p>
+              <ul class="list-checkmark">
+                <li>Monitoramento 24/7</li>
+                <li>Otimizações mensais</li>
+                <li>Suporte prioritário</li>
+                <li>Evolução contínua</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div style="height: var(--space-xl);"></div>
+
+        <div class="alert-dark">
+          <div class="alert-icon"><i class="fa-solid fa-lightbulb"></i></div>
+          <div class="alert-content">
+            <h4>Diferencial Competitivo</h4>
+            <p>Construo minha própria plataforma de desenvolvimento interna. Isso me permite focar no que realmente importa: a lógica de negócio e o impacto no seu resultado. Entregas rápidas sem comprometer qualidade.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-block">
+      <h2>Pronto para Começar?</h2>
+      <p>Vamos conversar sobre como posso ajudar a transformar seu negócio com IA.</p>
+      <div class="card-actions" style="justify-content: center;">
+        <a href="como-me-comunico.html" class="btn btn-dark btn-lg">
+          <i class="fa-solid fa-comments"></i> Conhecer Minha Comunicação
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-mode');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quem Sou - Flávio Freitas</title>
+  <link rel="stylesheet" href="src/css/flavio-ai-design-system.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Header compartilhado */
+    .main-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: linear-gradient(180deg, rgba(58, 58, 60, 0.98) 0%, rgba(42, 42, 44, 0.95) 100%);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(245, 239, 231, 0.1);
+      padding: var(--space-md) 0;
+    }
+
+    body.light-mode .main-header {
+      background: linear-gradient(180deg, rgba(245, 239, 231, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%);
+      border-bottom: 1px solid rgba(58, 58, 60, 0.1);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      text-decoration: none;
+      color: var(--brand-light);
+      font-size: var(--text-xl);
+      font-weight: var(--font-bold);
+    }
+
+    body.light-mode .header-logo { color: var(--brand-primary); }
+    .header-logo i { color: var(--brand-accent-1); font-size: 32px; }
+
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      gap: var(--space-xl);
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+
+    .main-nav a {
+      color: rgba(245, 239, 231, 0.8);
+      text-decoration: none;
+      font-weight: var(--font-medium);
+      transition: all var(--transition-fast);
+      padding: var(--space-sm) 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    body.light-mode .main-nav a { color: var(--brand-surface); }
+    .main-nav a:hover, .main-nav a.active {
+      color: var(--brand-accent-1);
+      border-bottom-color: var(--brand-accent-1);
+    }
+
+    .header-toggle {
+      width: 48px;
+      height: 48px;
+      background: rgba(245, 239, 231, 0.05);
+      border: 1px solid rgba(245, 239, 231, 0.1);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-base);
+    }
+
+    body.light-mode .header-toggle {
+      background: rgba(58, 58, 60, 0.05);
+      border: 1px solid rgba(58, 58, 60, 0.1);
+    }
+
+    .header-toggle:hover { background: var(--brand-accent-1); }
+
+    .toggle-icon { font-size: 20px; }
+    .toggle-icon.moon { color: var(--brand-light); }
+    body.light-mode .toggle-icon.moon { display: none; }
+    .toggle-icon.sun { color: var(--brand-primary); display: none; }
+    body.light-mode .toggle-icon.sun { display: block; }
+
+    .main-content { padding-top: 80px; min-height: 100vh; }
+
+    body.light-mode { background-color: var(--brand-light); color: var(--brand-primary); }
+
+    .section { padding: var(--space-3xl) var(--space-lg); }
+    .section-container { max-width: 1200px; margin: 0 auto; }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .main-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <a href="index.html" class="header-logo">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span>Flávio Freitas</span>
+      </a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="quem-sou.html" class="active">Quem Sou</a></li>
+          <li><a href="o-que-faco.html">O Que Faço</a></li>
+          <li><a href="como-me-comunico.html">Como Me Comunico</a></li>
+          <li>
+            <button class="header-toggle" onclick="toggleTheme()">
+              <i class="fa-solid fa-moon toggle-icon moon"></i>
+              <i class="fa-solid fa-sun toggle-icon sun"></i>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="main-content">
+    <!-- Hero -->
+    <section class="hero-dark">
+      <div class="hero-content">
+        <div class="hero-icon">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <h1>Quem Sou</h1>
+        <p>Flávio Freitas - Especialista em IA que transforma complexidade em vantagem competitiva</p>
+      </div>
+    </section>
+
+    <!-- Sobre -->
+    <section class="section">
+      <div class="section-container">
+        <div class="card-horizontal dark" style="margin-bottom: var(--space-xl);">
+          <div class="card-icon">
+            <i class="fa-solid fa-bullseye"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Minha Missão</h3>
+            <p class="card-text">Construo agentes de IA que amplificam o potencial humano, transformando dados em decisões, processos em vantagens competitivas e tecnologia em resultados mensuráveis. Especialista em tornar IA acessível para não-desenvolvedores.</p>
+          </div>
+        </div>
+
+        <div class="cards-grid-2">
+          <div class="card-horizontal accent">
+            <div class="card-icon">
+              <i class="fa-solid fa-rocket"></i>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Visão</h3>
+              <p class="card-text">Estamos no epicentro da maior mudança tecnológica desde a internet. O software evolui de ferramenta passiva para colaborador ativo. Meu objetivo é democratizar esse poder.</p>
+            </div>
+          </div>
+
+          <div class="card-horizontal light">
+            <div class="card-icon">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Propósito</h3>
+              <p class="card-text">IA não veio para melhorar processos, mas para mudá-los completamente. Acredito em transformação radical, não em otimização incremental.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider-dark"></div>
+
+    <!-- Recursos -->
+    <section class="section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2>Explore Minha Marca</h2>
+          <p>Conheça os recursos disponíveis sobre minha identidade e trabalho</p>
+        </div>
+
+        <div class="cards-grid-3">
+          <div class="card-vertical dark">
+            <div class="card-icon">
+              <i class="fa-solid fa-book-open"></i>
+            </div>
+            <h3 class="card-title">Guia de Marca</h3>
+            <p class="card-text">Posicionamento estratégico completo, proposta de valor, personalidade da marca, público-alvo e muito mais.</p>
+            <ul class="list-checkmark">
+              <li>Visão & Missão</li>
+              <li>3 Pilares da Transformação</li>
+              <li>Posicionamento Competitivo</li>
+              <li>Personalidade & Tom de Voz</li>
+            </ul>
+            <div class="card-actions">
+              <a href="examples/guia-de-marca.html" class="btn btn-dark">
+                <i class="fa-solid fa-arrow-right"></i> Ver Guia Completo
+              </a>
+            </div>
+          </div>
+
+          <div class="card-vertical dark">
+            <div class="card-icon">
+              <i class="fa-solid fa-cube"></i>
+            </div>
+            <h3 class="card-title">Design System</h3>
+            <p class="card-text">Sistema completo de componentes, tokens de design e diretrizes visuais para consistência da marca.</p>
+            <ul class="list-checkmark">
+              <li>50+ Componentes</li>
+              <li>Design Tokens (cores, spacing)</li>
+              <li>Dark & Light Mode</li>
+              <li>Sistema Responsivo</li>
+            </ul>
+            <div class="card-actions">
+              <a href="examples/design-system-with-sidebar.html" class="btn btn-dark">
+                <i class="fa-solid fa-arrow-right"></i> Ver Componentes
+              </a>
+            </div>
+          </div>
+
+          <div class="card-vertical dark">
+            <div class="card-icon">
+              <i class="fa-solid fa-file-code"></i>
+            </div>
+            <h3 class="card-title">Templates</h3>
+            <p class="card-text">Landing pages e templates prontos demonstrando aplicação prática do design system em contextos reais.</p>
+            <ul class="list-checkmark">
+              <li>Landing Page de Conversão</li>
+              <li>Página de Produtos</li>
+              <li>Formulários & CTAs</li>
+              <li>Seções Reutilizáveis</li>
+            </ul>
+            <div class="card-actions">
+              <a href="examples/landing-page.html" class="btn btn-dark">
+                <i class="fa-solid fa-arrow-right"></i> Ver Templates
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-block">
+      <h2>Vamos Conversar?</h2>
+      <p>Interessado em transformar seu negócio com IA? Entre em contato.</p>
+      <div class="card-actions" style="justify-content: center;">
+        <a href="o-que-faco.html" class="btn btn-dark btn-lg">
+          <i class="fa-solid fa-rocket"></i> Ver O Que Faço
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-mode');
+    });
+  </script>
+</body>
+</html>
