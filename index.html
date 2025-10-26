@@ -3,521 +3,584 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Flavio AI Design System V3 - Sistema de design completo para democratizar IA para designers e PMs não-técnicos">
-  <title>Flavio AI Design System V3 - Home</title>
-
-  <!-- Font Awesome -->
+  <title>Flávio Freitas - Especialista em IA e Transformação Digital</title>
+  <link rel="stylesheet" href="src/css/flavio-ai-design-system.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <style>
-    :root {
-      /* Dark Theme */
-      --bg-primary: #1a1a1c;
-      --bg-secondary: #2a2a2c;
-      --bg-tertiary: #3A3A3C;
-      --text-primary: #F5EFE7;
-      --text-secondary: rgba(245,239,231,0.8);
-      --text-muted: rgba(245,239,231,0.6);
-      --accent-primary: #E87A52;
-      --accent-secondary: #388379;
-      --border-color: rgba(232,122,82,0.15);
-      --shadow-color: rgba(232,122,82,0.2);
+    /* Header & Navigation */
+    .main-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: linear-gradient(180deg, rgba(58, 58, 60, 0.98) 0%, rgba(42, 42, 44, 0.95) 100%);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(245, 239, 231, 0.1);
+      padding: var(--space-md) 0;
+      transition: all var(--transition-base);
     }
 
-    * {
+    body.light-mode .main-header {
+      background: linear-gradient(180deg, rgba(245, 239, 231, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%);
+      border-bottom: 1px solid rgba(58, 58, 60, 0.1);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      text-decoration: none;
+      color: var(--brand-light);
+      font-size: var(--text-xl);
+      font-weight: var(--font-bold);
+    }
+
+    body.light-mode .header-logo {
+      color: var(--brand-primary);
+    }
+
+    .header-logo i {
+      color: var(--brand-accent-1);
+      font-size: 32px;
+    }
+
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      gap: var(--space-xl);
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      align-items: center;
     }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
+    .main-nav a {
+      color: rgba(245, 239, 231, 0.8);
+      text-decoration: none;
+      font-weight: var(--font-medium);
+      font-size: var(--text-base);
+      transition: all var(--transition-fast);
+      padding: var(--space-sm) 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    body.light-mode .main-nav a {
+      color: var(--brand-surface);
+    }
+
+    .main-nav a:hover {
+      color: var(--brand-accent-1);
+      border-bottom-color: var(--brand-accent-1);
+    }
+
+    /* Theme Toggle */
+    .header-toggle {
+      width: 48px;
+      height: 48px;
+      background: rgba(245, 239, 231, 0.05);
+      border: 1px solid rgba(245, 239, 231, 0.1);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-base);
+    }
+
+    body.light-mode .header-toggle {
+      background: rgba(58, 58, 60, 0.05);
+      border: 1px solid rgba(58, 58, 60, 0.1);
+    }
+
+    .header-toggle:hover {
+      background: var(--brand-accent-1);
+      border-color: var(--brand-accent-1);
+    }
+
+    .toggle-icon {
+      font-size: 20px;
+      transition: all var(--transition-base);
+    }
+
+    .toggle-icon.moon {
+      color: var(--brand-light);
+    }
+
+    body.light-mode .toggle-icon.moon {
+      display: none;
+    }
+
+    .toggle-icon.sun {
+      color: var(--brand-primary);
+      display: none;
+    }
+
+    body.light-mode .toggle-icon.sun {
+      display: block;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      width: 48px;
+      height: 48px;
+      background: rgba(245, 239, 231, 0.05);
+      border: 1px solid rgba(245, 239, 231, 0.1);
+      border-radius: var(--radius-md);
+      color: var(--brand-light);
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    body.light-mode .mobile-menu-btn {
+      background: rgba(58, 58, 60, 0.05);
+      border: 1px solid rgba(58, 58, 60, 0.1);
+      color: var(--brand-primary);
+    }
+
+    /* Main Content */
+    .main-content {
+      padding-top: 80px;
       min-height: 100vh;
     }
 
-    /* HEADER */
-    .header {
-      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-      padding: 80px 32px 60px;
-      text-align: center;
-      border-bottom: 2px solid var(--border-color);
+    /* Hero Section */
+    .hero-home {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--brand-primary) 0%, #2a2a2c 50%, var(--brand-primary) 100%);
       position: relative;
       overflow: hidden;
     }
 
-    .header::before {
+    body.light-mode .hero-home {
+      background: linear-gradient(135deg, var(--brand-light) 0%, #ffffff 50%, var(--brand-light) 100%);
+    }
+
+    .hero-home::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: radial-gradient(circle at 50% 50%, rgba(232,122,82,0.1) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .header-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .logo {
-      width: 100px;
-      height: 100px;
-      background: rgba(232,122,82,0.15);
-      border-radius: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 48px;
-      color: var(--accent-primary);
-      margin: 0 auto 32px;
-      animation: float 3s ease-in-out infinite;
+      background: radial-gradient(circle at 20% 50%, rgba(232, 122, 82, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 50%, rgba(56, 131, 121, 0.1) 0%, transparent 50%);
+      animation: float 20s ease-in-out infinite;
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-20px) scale(1.05); }
     }
 
-    h1 {
-      font-size: 48px;
-      font-weight: 700;
-      margin-bottom: 16px;
-      background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .subtitle {
-      font-size: 18px;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-    }
-
-    .version-badge {
-      display: inline-block;
-      background: var(--accent-primary);
-      color: var(--bg-primary);
-      padding: 8px 20px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    /* CONTAINER */
-    .container {
+    .hero-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 80px 32px;
+      padding: 0 var(--space-lg);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-logo {
+      font-size: 120px;
+      color: var(--brand-accent-1);
+      margin-bottom: var(--space-xl);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: var(--font-bold);
+      color: var(--brand-light);
+      margin-bottom: var(--space-lg);
+      line-height: var(--leading-tight);
+    }
+
+    body.light-mode .hero-title {
+      color: var(--brand-primary);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: rgba(245, 239, 231, 0.8);
+      margin-bottom: var(--space-2xl);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: var(--leading-body);
+    }
+
+    body.light-mode .hero-subtitle {
+      color: var(--brand-surface);
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: var(--space-lg);
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: var(--space-3xl);
+    }
+
+    /* Light Mode */
+    body.light-mode {
+      background-color: var(--brand-light);
+      color: var(--brand-primary);
+    }
+
+    /* Section Styles */
+    .section {
+      padding: var(--space-3xl) var(--space-lg);
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .section-title {
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+      color: var(--brand-light);
       text-align: center;
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 16px;
+      margin-bottom: var(--space-xl);
     }
 
-    .section-subtitle {
-      text-align: center;
-      font-size: 16px;
-      color: var(--text-muted);
-      margin-bottom: 48px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+    body.light-mode .section-title {
+      color: var(--brand-primary);
     }
 
-    /* CARDS GRID */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 32px;
-      margin-bottom: 48px;
+    /* Footer */
+    .main-footer {
+      background: linear-gradient(180deg, var(--brand-primary) 0%, #2a2a2c 100%);
+      padding: var(--space-3xl) var(--space-lg) var(--space-xl);
+      margin-top: var(--space-3xl);
     }
 
-    .page-card {
-      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
-      border-radius: 20px;
-      padding: 40px;
-      border: 2px solid var(--border-color);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
+    body.light-mode .main-footer {
+      background: linear-gradient(180deg, #f0f0f0 0%, #e0e0e0 100%);
     }
 
-    .page-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .page-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--accent-primary);
-      box-shadow: 0 20px 60px var(--shadow-color);
-    }
-
-    .page-card:hover::before {
-      opacity: 1;
-    }
-
-    .card-icon {
-      width: 80px;
-      height: 80px;
-      background: rgba(232,122,82,0.15);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 36px;
-      color: var(--accent-primary);
-      margin-bottom: 24px;
-    }
-
-    .card-icon.secondary {
-      background: rgba(56,131,121,0.15);
-      color: var(--accent-secondary);
-    }
-
-    .card-title {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 12px;
-    }
-
-    .card-description {
-      font-size: 15px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 24px;
-      flex: 1;
-    }
-
-    .card-features {
-      list-style: none;
-      margin-bottom: 24px;
-    }
-
-    .card-features li {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .card-features i {
-      color: var(--accent-secondary);
-      font-size: 12px;
-    }
-
-    .card-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 28px;
-      background: var(--accent-primary);
-      color: var(--bg-primary);
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 15px;
-      transition: all 0.2s;
-      width: 100%;
-      text-align: center;
-    }
-
-    .card-button:hover {
-      background: #ff8a64;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(232,122,82,0.4);
-    }
-
-    .card-button.secondary {
-      background: var(--accent-secondary);
-    }
-
-    .card-button.secondary:hover {
-      background: #4a9d8d;
-    }
-
-    .card-button.outline {
-      background: transparent;
-      color: var(--accent-primary);
-      box-shadow: inset 0 0 0 2px var(--accent-primary);
-    }
-
-    .card-button.outline:hover {
-      background: rgba(232,122,82,0.1);
-    }
-
-    /* FOOTER */
-    .footer {
-      background: var(--bg-secondary);
-      padding: 48px 32px;
-      text-align: center;
-      border-top: 2px solid var(--border-color);
-      margin-top: 80px;
-    }
-
-    .footer-content {
-      max-width: 800px;
+    .footer-container {
+      max-width: 1200px;
       margin: 0 auto;
     }
 
-    .footer-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 16px;
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-2xl);
+      margin-bottom: var(--space-2xl);
+    }
+
+    .footer-section h3 {
+      color: var(--brand-accent-1);
+      margin-bottom: var(--space-md);
+      font-size: var(--text-lg);
+    }
+
+    .footer-section p,
+    .footer-section li {
+      color: rgba(245, 239, 231, 0.7);
+      line-height: var(--leading-body);
+    }
+
+    body.light-mode .footer-section p,
+    body.light-mode .footer-section li {
+      color: var(--brand-surface);
     }
 
     .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: var(--space-sm);
     }
 
     .footer-links a {
-      color: var(--text-muted);
+      color: rgba(245, 239, 231, 0.7);
       text-decoration: none;
-      font-size: 14px;
-      transition: color 0.2s;
+      transition: all var(--transition-fast);
+    }
+
+    body.light-mode .footer-links a {
+      color: var(--brand-surface);
     }
 
     .footer-links a:hover {
-      color: var(--accent-primary);
+      color: var(--brand-accent-1);
+      padding-left: var(--space-xs);
     }
 
-    .footer-info {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-top: 24px;
+    .footer-bottom {
+      border-top: 1px solid rgba(245, 239, 231, 0.1);
+      padding-top: var(--space-lg);
+      text-align: center;
+      color: rgba(245, 239, 231, 0.5);
+      font-size: var(--text-sm);
     }
 
-    .divider {
-      height: 1px;
-      background: linear-gradient(
-        to right,
-        transparent 0%,
-        var(--border-color) 50%,
-        transparent 100%
-      );
-      margin: 48px 0;
+    body.light-mode .footer-bottom {
+      border-top: 1px solid rgba(58, 58, 60, 0.1);
+      color: var(--brand-surface);
     }
 
-    /* RESPONSIVE */
+    /* Responsive */
     @media (max-width: 768px) {
-      .header {
-        padding: 60px 24px 40px;
+      .main-nav {
+        display: none;
       }
 
-      h1 {
-        font-size: 36px;
+      .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      .container {
-        padding: 60px 24px;
+      .hero-logo {
+        font-size: 80px;
       }
 
-      .cards-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
+      .hero-cta {
+        flex-direction: column;
+        align-items: center;
       }
 
-      .section-title {
-        font-size: 28px;
+      .hero-cta .btn {
+        width: 100%;
+        max-width: 300px;
       }
     }
   </style>
 </head>
 <body>
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-content">
-      <div class="logo">
+  <!-- Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <a href="index.html" class="header-logo">
         <i class="fa-solid fa-wand-magic-sparkles"></i>
-      </div>
-      <h1>Flavio AI Design System V3</h1>
-      <p class="subtitle">
-        Sistema de design completo para democratizar IA para designers e PMs não-técnicos
-      </p>
-      <span class="version-badge">
-        <i class="fa-solid fa-tag"></i> Version 1.0.0
-      </span>
-    </div>
-  </div>
+        <span>Flávio Freitas</span>
+      </a>
 
-  <!-- MAIN CONTENT -->
-  <div class="container">
-
-    <h2 class="section-title">
-      <i class="fa-solid fa-rocket"></i> Escolha sua Experiência
-    </h2>
-    <p class="section-subtitle">
-      Explore nosso Design System através de diferentes visualizações. Cada página oferece uma experiência única.
-    </p>
-
-    <!-- CARDS GRID -->
-    <div class="cards-grid">
-
-      <!-- CARD 1: Design System com Sidebar -->
-      <div class="page-card">
-        <div class="card-icon">
-          <i class="fa-solid fa-bars-staggered"></i>
-        </div>
-        <h3 class="card-title">Design System com Sidebar</h3>
-        <p class="card-description">
-          Versão completa e interativa com menu lateral de navegação e toggle para alternar entre dark/light mode. Ideal para explorar todos os componentes.
-        </p>
-        <ul class="card-features">
-          <li><i class="fa-solid fa-check-circle"></i> Menu lateral fixo com navegação</li>
-          <li><i class="fa-solid fa-check-circle"></i> Toggle dark/light mode</li>
-          <li><i class="fa-solid fa-check-circle"></i> Active state por scroll</li>
-          <li><i class="fa-solid fa-check-circle"></i> Responsivo mobile</li>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="quem-sou.html">Quem Sou</a></li>
+          <li><a href="o-que-faco.html">O Que Faço</a></li>
+          <li><a href="como-faco.html">Como Faço</a></li>
+          <li>
+            <button class="header-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+              <i class="fa-solid fa-moon toggle-icon moon"></i>
+              <i class="fa-solid fa-sun toggle-icon sun"></i>
+            </button>
+          </li>
         </ul>
-        <a href="examples/design-system-with-sidebar.html" class="card-button">
-          <i class="fa-solid fa-arrow-right"></i>
-          Acessar Design System
-        </a>
-      </div>
+      </nav>
 
-      <!-- CARD 2: Showcase Completo -->
-      <div class="page-card">
-        <div class="card-icon secondary">
-          <i class="fa-solid fa-layer-group"></i>
-        </div>
-        <h3 class="card-title">Showcase Completo</h3>
-        <p class="card-description">
-          Demonstração de todos os componentes do design system em uma página única. Perfeito para visualizar a biblioteca completa de elementos.
-        </p>
-        <ul class="card-features">
-          <li><i class="fa-solid fa-check-circle"></i> 50+ componentes documentados</li>
-          <li><i class="fa-solid fa-check-circle"></i> Exemplos de uso práticos</li>
-          <li><i class="fa-solid fa-check-circle"></i> Código CSS demonstrado</li>
-          <li><i class="fa-solid fa-check-circle"></i> Layout tradicional</li>
-        </ul>
-        <a href="examples/showcase.html" class="card-button secondary">
-          <i class="fa-solid fa-eye"></i>
-          Ver Showcase
-        </a>
-      </div>
-
-      <!-- CARD 3: Landing Page Exemplo -->
-      <div class="page-card">
-        <div class="card-icon">
-          <i class="fa-solid fa-rocket"></i>
-        </div>
-        <h3 class="card-title">Landing Page de Conversão</h3>
-        <p class="card-description">
-          Exemplo prático de landing page completa usando o design system. Estrutura otimizada para conversão com todos os elementos essenciais.
-        </p>
-        <ul class="card-features">
-          <li><i class="fa-solid fa-check-circle"></i> Hero + Social Proof + CTA</li>
-          <li><i class="fa-solid fa-check-circle"></i> Seções de conversão</li>
-          <li><i class="fa-solid fa-check-circle"></i> Pricing + Testimonials</li>
-          <li><i class="fa-solid fa-check-circle"></i> FAQ + Footer completo</li>
-        </ul>
-        <a href="examples/landing-page.html" class="card-button">
-          <i class="fa-solid fa-globe"></i>
-          Ver Landing Page
-        </a>
-      </div>
-
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </div>
+  </header>
 
-    <div class="divider"></div>
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero-home">
+      <div class="hero-container">
+        <div class="hero-logo">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+        <h1 class="hero-title">Transformo Complexidade em Vantagem Competitiva</h1>
+        <p class="hero-subtitle">
+          Construo agentes de IA que amplificam o potencial humano.
+          Não vendo software - entrego transformação real com ROI mensurável.
+        </p>
+        <div class="hero-cta">
+          <a href="o-que-faco.html" class="btn btn-dark btn-xl">
+            <i class="fa-solid fa-rocket"></i> Conheça os 3 Pilares
+          </a>
+          <a href="como-faco.html" class="btn btn-light-outline btn-xl">
+            <i class="fa-solid fa-diagram-project"></i> Como Faço
+          </a>
+        </div>
 
-    <!-- INFO SECTION -->
-    <div style="text-align: center; max-width: 700px; margin: 0 auto;">
-      <h3 style="font-size: 24px; color: var(--text-primary); margin-bottom: 16px;">
-        <i class="fa-solid fa-info-circle" style="color: var(--accent-primary);"></i>
-        Sobre o Design System
-      </h3>
-      <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 24px;">
-        O <strong style="color: var(--accent-primary);">Flavio AI Design System V3</strong> foi criado para democratizar a inteligência artificial para designers e product managers não-técnicos. Baseado na paleta Equilibrada, oferece componentes dark mode nativos, sistema de espaçamento de 8px e tipografia escalável.
-      </p>
+        <!-- Stats -->
+        <div class="stats-grid-3" style="margin-top: var(--space-3xl);">
+          <div class="stat-item-dark">
+            <div class="stat-number">60-90</div>
+            <div class="stat-label">Dias para MVP</div>
+          </div>
+          <div class="stat-item-dark">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Pilares de Valor</div>
+          </div>
+          <div class="stat-item-dark">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Possibilidades</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
-        <div style="flex: 1; min-width: 200px; background: var(--bg-secondary); padding: 24px; border-radius: 12px; border: 1px solid var(--border-color);">
-          <div style="font-size: 36px; font-weight: 700; color: var(--accent-primary); margin-bottom: 8px;">3</div>
-          <div style="font-size: 14px; color: var(--text-muted);">Paletas de Cores</div>
+    <!-- Quick Links Section -->
+    <section class="section">
+      <div class="section-container">
+        <h2 class="section-title">Explore Nossa Plataforma</h2>
+
+        <div class="cards-grid-3">
+          <!-- Quem Sou -->
+          <div class="card-vertical dark">
+            <div class="card-icon">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <h3 class="card-title">Quem Sou</h3>
+            <p class="card-text">
+              Conheça minha trajetória, visão e o que me torna único como especialista em IA para não-desenvolvedores.
+            </p>
+            <div class="card-actions">
+              <a href="quem-sou.html" class="btn btn-dark">
+                <i class="fa-solid fa-arrow-right"></i> Saiba Mais
+              </a>
+            </div>
+          </div>
+
+          <!-- O Que Faço -->
+          <div class="card-vertical dark">
+            <div class="card-icon">
+              <i class="fa-solid fa-rocket"></i>
+            </div>
+            <h3 class="card-title">O Que Faço</h3>
+            <p class="card-text">
+              Descubra os 3 Pilares da Transformação: Design de Experiências, Redesenho Operacional e Inteligência Estratégica.
+            </p>
+            <div class="card-actions">
+              <a href="o-que-faco.html" class="btn btn-dark">
+                <i class="fa-solid fa-arrow-right"></i> Ver Pilares
+              </a>
+            </div>
+          </div>
+
+          <!-- Como Faço -->
+          <div class="card-vertical dark">
+            <div class="card-icon">
+              <i class="fa-solid fa-gears"></i>
+            </div>
+            <h3 class="card-title">Como Faço</h3>
+            <p class="card-text">
+              Entenda minha metodologia, modelo de trabalho e como entrego valor desde o Discovery até a Operação.
+            </p>
+            <div class="card-actions">
+              <a href="como-faco.html" class="btn btn-dark">
+                <i class="fa-solid fa-arrow-right"></i> Ver Metodologia
+              </a>
+            </div>
+          </div>
         </div>
-        <div style="flex: 1; min-width: 200px; background: var(--bg-secondary); padding: 24px; border-radius: 12px; border: 1px solid var(--border-color);">
-          <div style="font-size: 36px; font-weight: 700; color: var(--accent-secondary); margin-bottom: 8px;">50+</div>
-          <div style="font-size: 14px; color: var(--text-muted);">Componentes</div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-block">
+      <h2>Pronto para Transformar seu Negócio?</h2>
+      <p>Vamos conversar sobre como a IA pode se tornar sua maior vantagem competitiva.</p>
+      <div class="card-actions" style="justify-content: center;">
+        <a href="quem-sou.html" class="btn btn-dark btn-lg">
+          <i class="fa-solid fa-comments"></i> Iniciar Conversa
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <!-- Sobre -->
+        <div class="footer-section">
+          <h3><i class="fa-solid fa-wand-magic-sparkles"></i> Flávio Freitas</h3>
+          <p>
+            Construo agentes de IA que amplificam o potencial humano, transformando processos em vantagens competitivas e tecnologia em resultados mensuráveis.
+          </p>
         </div>
-        <div style="flex: 1; min-width: 200px; background: var(--bg-secondary); padding: 24px; border-radius: 12px; border: 1px solid var(--border-color);">
-          <div style="font-size: 36px; font-weight: 700; color: var(--accent-primary); margin-bottom: 8px;">100%</div>
-          <div style="font-size: 14px; color: var(--text-muted);">Responsivo</div>
+
+        <!-- Links Rápidos -->
+        <div class="footer-section">
+          <h3>Navegação</h3>
+          <ul class="footer-links">
+            <li><a href="quem-sou.html"><i class="fa-solid fa-user"></i> Quem Sou</a></li>
+            <li><a href="o-que-faco.html"><i class="fa-solid fa-rocket"></i> O Que Faço</a></li>
+            <li><a href="como-faco.html"><i class="fa-solid fa-gears"></i> Como Faço</a></li>
+          </ul>
         </div>
+
+        <!-- Recursos -->
+        <div class="footer-section">
+          <h3>Recursos</h3>
+          <ul class="footer-links">
+            <li><a href="examples/guia-de-marca.html"><i class="fa-solid fa-book-open"></i> Guia de Marca</a></li>
+            <li><a href="examples/design-system-with-sidebar.html"><i class="fa-solid fa-cube"></i> Design System</a></li>
+            <li><a href="examples/landing-page.html"><i class="fa-solid fa-file-code"></i> Templates</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Flávio Freitas. Todos os direitos reservados. | Amplificando o Potencial Humano através da IA</p>
       </div>
     </div>
+  </footer>
 
-  </div>
+  <script>
+    // Theme Toggle
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      const theme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
+      localStorage.setItem('theme', theme);
+    }
 
-  <!-- FOOTER -->
-  <div class="footer">
-    <div class="footer-content">
-      <div class="footer-title">
-        <i class="fa-solid fa-palette"></i> Flavio AI Design System V3
-      </div>
+    // Load saved theme
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+      }
+    });
 
-      <div class="footer-links">
-        <a href="https://github.com/flaviohcfreitas/brand" target="_blank">
-          <i class="fa-brands fa-github"></i> GitHub
-        </a>
-        <a href="examples/design-system-with-sidebar.html">
-          <i class="fa-solid fa-book"></i> Documentação
-        </a>
-        <a href="examples/showcase.html">
-          <i class="fa-solid fa-layer-group"></i> Componentes
-        </a>
-        <a href="examples/landing-page.html">
-          <i class="fa-solid fa-globe"></i> Exemplos
-        </a>
-      </div>
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+      // TODO: Implement mobile menu
+      alert('Menu mobile em desenvolvimento');
+    }
 
-      <div style="height: 1px; background: var(--border-color); margin: 24px 0;"></div>
-
-      <div class="footer-info">
-        <p style="margin-bottom: 8px;">
-          <i class="fa-solid fa-code"></i> Paleta Equilibrada •
-          <i class="fa-solid fa-moon"></i> Dark Mode Nativo •
-          <i class="fa-solid fa-mobile-screen"></i> Mobile First
-        </p>
-        <p style="opacity: 0.6;">
-          Version 1.0.0 • Janeiro 2025 •
-          <i class="fa-solid fa-heart" style="color: var(--accent-primary);"></i>
-          Feito para transformar design
-        </p>
-      </div>
-    </div>
-  </div>
-
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
