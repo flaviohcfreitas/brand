@@ -3,14 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=examples/showcase.html">
   <meta name="description" content="Flavio AI Design System V3 - Sistema de design completo para democratizar IA para designers e PMs não-técnicos">
-  <title>Flavio AI Design System V3 - Documentação</title>
+  <title>Flavio AI Design System V3 - Home</title>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    :root {
+      /* Dark Theme */
+      --bg-primary: #1a1a1c;
+      --bg-secondary: #2a2a2c;
+      --bg-tertiary: #3A3A3C;
+      --text-primary: #F5EFE7;
+      --text-secondary: rgba(245,239,231,0.8);
+      --text-muted: rgba(245,239,231,0.6);
+      --accent-primary: #E87A52;
+      --accent-secondary: #388379;
+      --border-color: rgba(232,122,82,0.15);
+      --shadow-color: rgba(232,122,82,0.2);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -19,113 +32,492 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
-      background: linear-gradient(135deg, #3A3A3C 0%, #2a2a2c 100%);
-      color: #F5EFE7;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+      padding: 80px 32px 60px;
+      text-align: center;
+      border-bottom: 2px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(232,122,82,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      background: rgba(232,122,82,0.15);
+      border-radius: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      padding: 24px;
+      font-size: 48px;
+      color: var(--accent-primary);
+      margin: 0 auto 32px;
+      animation: float 3s ease-in-out infinite;
     }
 
-    .loader {
-      text-align: center;
-    }
-
-    .loader-icon {
-      font-size: 64px;
-      color: #E87A52;
-      margin-bottom: 24px;
-      animation: pulse 2s ease-in-out infinite;
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
     }
 
     h1 {
-      font-size: 32px;
+      font-size: 48px;
+      font-weight: 700;
       margin-bottom: 16px;
-      color: #F5EFE7;
+      background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    p {
+    .subtitle {
       font-size: 18px;
-      color: rgba(245, 239, 231, 0.8);
-      margin-bottom: 32px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
     }
 
-    .dots {
+    .version-badge {
       display: inline-block;
-    }
-
-    .dots span {
-      animation: blink 1.4s infinite;
-      animation-fill-mode: both;
-    }
-
-    .dots span:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .dots span:nth-child(3) {
-      animation-delay: 0.4s;
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(1.1);
-        opacity: 0.8;
-      }
-    }
-
-    @keyframes blink {
-      0%, 80%, 100% {
-        opacity: 0;
-      }
-      40% {
-        opacity: 1;
-      }
-    }
-
-    .link {
-      color: #E87A52;
-      text-decoration: none;
-      font-size: 16px;
-      padding: 12px 28px;
-      border: 2px solid #E87A52;
+      background: var(--accent-primary);
+      color: var(--bg-primary);
+      padding: 8px 20px;
       border-radius: 8px;
-      display: inline-block;
-      transition: all 0.3s ease;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    .link:hover {
-      background-color: #E87A52;
-      color: #F5EFE7;
+    /* CONTAINER */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 32px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* CARDS GRID */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    .page-card {
+      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+      border-radius: 20px;
+      padding: 40px;
+      border: 2px solid var(--border-color);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .page-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent-primary);
+      box-shadow: 0 20px 60px var(--shadow-color);
+    }
+
+    .page-card:hover::before {
+      opacity: 1;
+    }
+
+    .card-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(232,122,82,0.15);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      color: var(--accent-primary);
+      margin-bottom: 24px;
+    }
+
+    .card-icon.secondary {
+      background: rgba(56,131,121,0.15);
+      color: var(--accent-secondary);
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .card-description {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+
+    .card-features {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+
+    .card-features li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .card-features i {
+      color: var(--accent-secondary);
+      font-size: 12px;
+    }
+
+    .card-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--accent-primary);
+      color: var(--bg-primary);
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.2s;
+      width: 100%;
+      text-align: center;
+    }
+
+    .card-button:hover {
+      background: #ff8a64;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(232,122,82,0.4);
+    }
+
+    .card-button.secondary {
+      background: var(--accent-secondary);
+    }
+
+    .card-button.secondary:hover {
+      background: #4a9d8d;
+    }
+
+    .card-button.outline {
+      background: transparent;
+      color: var(--accent-primary);
+      box-shadow: inset 0 0 0 2px var(--accent-primary);
+    }
+
+    .card-button.outline:hover {
+      background: rgba(232,122,82,0.1);
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--bg-secondary);
+      padding: 48px 32px;
+      text-align: center;
+      border-top: 2px solid var(--border-color);
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .footer-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-primary);
+    }
+
+    .footer-info {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 24px;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent 0%,
+        var(--border-color) 50%,
+        transparent 100%
+      );
+      margin: 48px 0;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .header {
+        padding: 60px 24px 40px;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      .container {
+        padding: 60px 24px;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="loader">
-    <div class="loader-icon">
-      <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-content">
+      <div class="logo">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+      </div>
+      <h1>Flavio AI Design System V3</h1>
+      <p class="subtitle">
+        Sistema de design completo para democratizar IA para designers e PMs não-técnicos
+      </p>
+      <span class="version-badge">
+        <i class="fa-solid fa-tag"></i> Version 1.0.0
+      </span>
     </div>
-    <h1>Flavio AI Design System V3</h1>
-    <p>
-      Redirecionando para a documentação<span class="dots"><span>.</span><span>.</span><span>.</span></span>
-    </p>
-    <p>
-      <a href="examples/showcase.html" class="link">
-        <i class="fa-solid fa-arrow-right"></i> Ir para Showcase
-      </a>
-    </p>
   </div>
 
-  <script>
-    // Fallback redirect in case meta refresh doesn't work
-    setTimeout(() => {
-      window.location.href = 'examples/showcase.html';
-    }, 100);
-  </script>
+  <!-- MAIN CONTENT -->
+  <div class="container">
+
+    <h2 class="section-title">
+      <i class="fa-solid fa-rocket"></i> Escolha sua Experiência
+    </h2>
+    <p class="section-subtitle">
+      Explore nosso Design System através de diferentes visualizações. Cada página oferece uma experiência única.
+    </p>
+
+    <!-- CARDS GRID -->
+    <div class="cards-grid">
+
+      <!-- CARD 1: Design System com Sidebar -->
+      <div class="page-card">
+        <div class="card-icon">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </div>
+        <h3 class="card-title">Design System com Sidebar</h3>
+        <p class="card-description">
+          Versão completa e interativa com menu lateral de navegação e toggle para alternar entre dark/light mode. Ideal para explorar todos os componentes.
+        </p>
+        <ul class="card-features">
+          <li><i class="fa-solid fa-check-circle"></i> Menu lateral fixo com navegação</li>
+          <li><i class="fa-solid fa-check-circle"></i> Toggle dark/light mode</li>
+          <li><i class="fa-solid fa-check-circle"></i> Active state por scroll</li>
+          <li><i class="fa-solid fa-check-circle"></i> Responsivo mobile</li>
+        </ul>
+        <a href="examples/design-system-with-sidebar.html" class="card-button">
+          <i class="fa-solid fa-arrow-right"></i>
+          Acessar Design System
+        </a>
+      </div>
+
+      <!-- CARD 2: Showcase Completo -->
+      <div class="page-card">
+        <div class="card-icon secondary">
+          <i class="fa-solid fa-layer-group"></i>
+        </div>
+        <h3 class="card-title">Showcase Completo</h3>
+        <p class="card-description">
+          Demonstração de todos os componentes do design system em uma página única. Perfeito para visualizar a biblioteca completa de elementos.
+        </p>
+        <ul class="card-features">
+          <li><i class="fa-solid fa-check-circle"></i> 50+ componentes documentados</li>
+          <li><i class="fa-solid fa-check-circle"></i> Exemplos de uso práticos</li>
+          <li><i class="fa-solid fa-check-circle"></i> Código CSS demonstrado</li>
+          <li><i class="fa-solid fa-check-circle"></i> Layout tradicional</li>
+        </ul>
+        <a href="examples/showcase.html" class="card-button secondary">
+          <i class="fa-solid fa-eye"></i>
+          Ver Showcase
+        </a>
+      </div>
+
+      <!-- CARD 3: Landing Page Exemplo -->
+      <div class="page-card">
+        <div class="card-icon">
+          <i class="fa-solid fa-rocket"></i>
+        </div>
+        <h3 class="card-title">Landing Page de Conversão</h3>
+        <p class="card-description">
+          Exemplo prático de landing page completa usando o design system. Estrutura otimizada para conversão com todos os elementos essenciais.
+        </p>
+        <ul class="card-features">
+          <li><i class="fa-solid fa-check-circle"></i> Hero + Social Proof + CTA</li>
+          <li><i class="fa-solid fa-check-circle"></i> Seções de conversão</li>
+          <li><i class="fa-solid fa-check-circle"></i> Pricing + Testimonials</li>
+          <li><i class="fa-solid fa-check-circle"></i> FAQ + Footer completo</li>
+        </ul>
+        <a href="examples/landing-page.html" class="card-button">
+          <i class="fa-solid fa-globe"></i>
+          Ver Landing Page
+        </a>
+      </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- INFO SECTION -->
+    <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+      <h3 style="font-size: 24px; color: var(--text-primary); margin-bottom: 16px;">
+        <i class="fa-solid fa-info-circle" style="color: var(--accent-primary);"></i>
+        Sobre o Design System
+      </h3>
+      <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 24px;">
+        O <strong style="color: var(--accent-primary);">Flavio AI Design System V3</strong> foi criado para democratizar a inteligência artificial para designers e product managers não-técnicos. Baseado na paleta Equilibrada, oferece componentes dark mode nativos, sistema de espaçamento de 8px e tipografia escalável.
+      </p>
+
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
+        <div style="flex: 1; min-width: 200px; background: var(--bg-secondary); padding: 24px; border-radius: 12px; border: 1px solid var(--border-color);">
+          <div style="font-size: 36px; font-weight: 700; color: var(--accent-primary); margin-bottom: 8px;">3</div>
+          <div style="font-size: 14px; color: var(--text-muted);">Paletas de Cores</div>
+        </div>
+        <div style="flex: 1; min-width: 200px; background: var(--bg-secondary); padding: 24px; border-radius: 12px; border: 1px solid var(--border-color);">
+          <div style="font-size: 36px; font-weight: 700; color: var(--accent-secondary); margin-bottom: 8px;">50+</div>
+          <div style="font-size: 14px; color: var(--text-muted);">Componentes</div>
+        </div>
+        <div style="flex: 1; min-width: 200px; background: var(--bg-secondary); padding: 24px; border-radius: 12px; border: 1px solid var(--border-color);">
+          <div style="font-size: 36px; font-weight: 700; color: var(--accent-primary); margin-bottom: 8px;">100%</div>
+          <div style="font-size: 14px; color: var(--text-muted);">Responsivo</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-content">
+      <div class="footer-title">
+        <i class="fa-solid fa-palette"></i> Flavio AI Design System V3
+      </div>
+
+      <div class="footer-links">
+        <a href="https://github.com/flaviohcfreitas/brand" target="_blank">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+        <a href="examples/design-system-with-sidebar.html">
+          <i class="fa-solid fa-book"></i> Documentação
+        </a>
+        <a href="examples/showcase.html">
+          <i class="fa-solid fa-layer-group"></i> Componentes
+        </a>
+        <a href="examples/landing-page.html">
+          <i class="fa-solid fa-globe"></i> Exemplos
+        </a>
+      </div>
+
+      <div style="height: 1px; background: var(--border-color); margin: 24px 0;"></div>
+
+      <div class="footer-info">
+        <p style="margin-bottom: 8px;">
+          <i class="fa-solid fa-code"></i> Paleta Equilibrada •
+          <i class="fa-solid fa-moon"></i> Dark Mode Nativo •
+          <i class="fa-solid fa-mobile-screen"></i> Mobile First
+        </p>
+        <p style="opacity: 0.6;">
+          Version 1.0.0 • Janeiro 2025 •
+          <i class="fa-solid fa-heart" style="color: var(--accent-primary);"></i>
+          Feito para transformar design
+        </p>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
